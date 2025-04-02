@@ -8,11 +8,11 @@ import ContactModal from "@/components/modal/ContactModal";
 export default function Home() {
   return (
     <main>
-      <div className="h-screen"></div>
-      {/* <Hero />
+      <Hero />
       <About />
-      <Services />
-      <Footer /> */}
+      {/* <Services /> */}
+      <div className="h-screen"></div>
+      <Footer />
       <ContactModal />
       <FixedContactButton />
     </main>

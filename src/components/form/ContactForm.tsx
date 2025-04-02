@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import { playfair_display } from "@/fonts";
+import {
+  serviceOptions,
+  budgetOptions,
+  referralOptions,
+} from "@/data/contactForm";
 
 export default function ContactForm({
   formRef,
@@ -11,25 +16,6 @@ export default function ContactForm({
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState<string>("");
   const [referrals, setReferrals] = useState<string[]>([]);
-
-  const serviceOptions = [
-    "UGC",
-    "Brand Photography",
-    "Short-Form Video",
-    "Content Strategy",
-    "Identity",
-    "Account Management",
-    "Other",
-  ];
-  const budgetOptions = ["Under $500", "$500-$1k", "$1k-$2.5k", "$2.5k+"];
-  const referralOptions = [
-    "Instagram",
-    "TikTok",
-    "Creator X",
-    "Referral",
-    "Google",
-    "Other",
-  ];
 
   // Handle service selection (multiselect)
   const toggleService = (service: string) => {
@@ -57,7 +43,7 @@ export default function ContactForm({
   return (
     <div
       ref={formRef as React.RefObject<HTMLDivElement>}
-      className="flex flex-col p-8 pb-32 fixed bottom-4 left-4 right-4 bg-stone-100 rounded-xl z-998"
+      className="flex flex-col p-8 pb-32 bg-stone-100 rounded-xl"
     >
       <h2 className="text-7xl font-semibold mb-8">Get in touch</h2>
 
