@@ -20,18 +20,18 @@
   }
 }
 
-#card-0 {
+#card-1 .card-inner {
   @apply bg-[#FFD3B6];
 }
 
-#card-1 {
+#card-2 .card-inner {
   @apply bg-[#FF6B6B];
 }
 
-#card-2 {
+#card-3 .card-inner {
   @apply bg-stone-100;
 }
 
-#card-3 {
+#card-4 .card-inner {
   @apply bg-stone-900 text-stone-100;
 }

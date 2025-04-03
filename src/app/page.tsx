@@ -10,8 +10,7 @@ export default function Home() {
     <main>
       <Hero />
       <About />
-      {/* <Services /> */}
-      <div className="h-screen"></div>
+      <Services />
       <Footer />
       <ContactModal />
       <FixedContactButton />

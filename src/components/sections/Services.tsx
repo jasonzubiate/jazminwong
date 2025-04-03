@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+// import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -12,61 +12,72 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
 
 export default function Services() {
-  const containerRef = useRef(null);
+  useGSAP(() => {
+    const cards = gsap.utils.toArray(".card");
 
-  useGSAP(
-    () => {
-      const cards = gsap.utils.toArray(".card");
+    ScrollTrigger.create({
+      trigger: cards[0] as Element,
+      start: "top 30%",
+      endTrigger: cards[cards.length - 1] as Element,
+      end: "top 30%",
+      pin: "#services-title",
+      pinSpacing: false,
+      // markers: true,
+    });
 
-      ScrollTrigger.create({
+    gsap.to("#services-title", {
+      y: `-${(cards.length - 1) * 22}vh`,
+      ease: "none",
+      scrollTrigger: {
         trigger: cards[0] as Element,
-        start: "top 35%",
-        endTrigger: cards[cards.length - 1] as Element,
-        end: "bottom 30%",
-        pin: "#about",
-        pinSpacing: false,
-        markers: true,
-      });
+        start: "top 30%",
+        endTrigger: "#footer",
+        end: "top 65%",
+        scrub: true,
+        // markers: true,
+      },
+    });
 
-      cards.forEach((card, index) => {
-        const isLastCard = index === cards.length - 1;
-        const cardInner = (card as Element).querySelector(".card-inner");
+    cards.forEach((card, index) => {
+      const isLastCard = index === cards.length - 1;
+      const cardInner = (card as Element).querySelector(".card-inner");
 
-        if (cardInner && !isLastCard) {
-          ScrollTrigger.create({
+      if (!isLastCard) {
+        ScrollTrigger.create({
+          trigger: card as Element,
+          start: "top 30%",
+          endTrigger: cards[cards.length - 1] as Element,
+          end: "top 30%",
+          pin: true,
+          pinSpacing: false,
+          // markers: true,
+        });
+
+        gsap.to(cardInner, {
+          y: `-${(cards.length - index) * 15}vh`,
+          ease: "none",
+          scrollTrigger: {
             trigger: card as Element,
-            start: "top 35%",
-            endTrigger: "#footer",
-            end: "top 65%",
-            pin: true,
-            pinSpacing: false,
-          });
-
-          gsap.to(cardInner, {
-            y: `-${(cards.length - index) * 14}vh`,
-            ease: "none",
-            ScrollTrigger: {
-              trigger: card,
-              start: "top 35%",
-              endTrigger: "#footer",
-              end: "top 65%",
-              scrub: true,
-            },
-          });
-        }
-      });
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); 
+            start: "top 30%",
+            endTrigger: cards[cards.length - 1] as Element,
+            end: "top 30%",
+            scrub: true,
+            // markers: true,
+          },
+        });
       }
-    },
+    });
 
-    { scope: containerRef }
-  );
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  });
 
   return (
-    <section className="px-4 py-24" ref={containerRef}>
-      <h2 className="text-3xl font-semibold mb-8">Services</h2>
+    <section className="px-4 py-24">
+      <h2 id="services-title" className="text-3xl font-semibold mb-8">
+        Services
+      </h2>
 
       <div className="cards">
         {services.map((service, index) => (
@@ -93,35 +104,39 @@ function ServiceCard({
   index,
 }: ServiceCardProps) {
   return (
-    <div className="card relative rounded-xl" id={`card-${index}`}>
-      <div className="card-inner relative will-change-transform w-full h-full grid col-span-12 p-8 ">
-        <div className="card-content col-span-8 flex flex-col justify-between">
-          <h3 className="text-[96px] font-semibold tracking-tight">{title}</h3>
+    <div className="card relative" id={`card-${index + 1}`}>
+      <div className="card-inner relative will-change-transform w-full h-full p-8 rounded-xl grid grid-cols-12">
+        <div className="card-content col-span-8 flex flex-col gap-20">
+          <h3 className="text-[clamp(48px,6.5vw,96px)] font-semibold tracking-tight leading-none">
+            {title}
+          </h3>
 
-          <div className="flex gap-16">
+          <div className="flex gap-16 max-w-[90%]">
             <p
-              className={`${playfair_display.className} text-3xl leading-[1.15] tracking-wide font-normal w-3/5`}
+              className={`${playfair_display.className} text-[clamp(14px,1.6vw,24px)] leading-[1.15] font-normal w-3/5`}
             >
               {description}
             </p>
 
             <div className="flex flex-col w-2/5">
               {keywords.map((keyword, index) => (
-                <p key={index} className="text-sm font-normal">
+                <p
+                  key={index}
+                  className="text-[clamp(10px,0.9vw,16px)] font-normal -mb-0.5"
+                >
                   {keyword}
                 </p>
               ))}
             </div>
           </div>
         </div>
-        <div className="card-image col-span-4 rounded-lg overflow-hidden aspect-[16/9] relative">
+
+        <div className="col-span-4 h-full w-full rounded-lg overflow-hidden relative">
           <Image
             src={imageUrl}
             alt={title}
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="w-full h-auto"
+            fill
+            className="object-cover object-center"
           />
         </div>
       </div>
