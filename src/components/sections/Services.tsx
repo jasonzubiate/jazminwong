@@ -47,20 +47,20 @@ export default function Services() {
           trigger: card as Element,
           start: "top 30%",
           endTrigger: cards[cards.length - 1] as Element,
-          end: "top 30%",
+          end: "bottom 60%",
           pin: true,
           pinSpacing: false,
           // markers: true,
         });
 
         gsap.to(cardInner, {
-          y: `-${(cards.length - index) * 15}vh`,
+          y: `-${(cards.length - index) * 17}vh`,
           ease: "none",
           scrollTrigger: {
             trigger: card as Element,
             start: "top 30%",
             endTrigger: cards[cards.length - 1] as Element,
-            end: "top 30%",
+            end: "bottom 60%",
             scrub: true,
             // markers: true,
           },
@@ -104,7 +104,7 @@ function ServiceCard({
   index,
 }: ServiceCardProps) {
   return (
-    <div className="card relative" id={`card-${index + 1}`}>
+    <div className="card relative pb-4" id={`card-${index + 1}`}>
       <div className="card-inner relative will-change-transform w-full h-full p-8 rounded-xl grid grid-cols-12">
         <div className="card-content col-span-8 flex flex-col gap-20">
           <h3 className="text-[clamp(48px,6.5vw,96px)] font-semibold tracking-tight leading-none">
