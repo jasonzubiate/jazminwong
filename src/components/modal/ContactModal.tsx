@@ -22,7 +22,9 @@ export default function ContactModal() {
         animate={{ opacity: isOpen ? 1 : 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 inset-0 bg-stone-900/60 h-screen w-screen"
+        className={`fixed top-0 left-0 inset-0 bg-stone-900/60 h-screen w-screen ${
+          isOpen ? "" : "pointer-events-none"
+        }`}
       ></motion.div>
 
       <motion.div

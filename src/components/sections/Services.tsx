@@ -106,7 +106,7 @@ function ServiceCard({
   return (
     <div className="card relative" id={`card-${index + 1}`}>
       <div className="card-inner relative will-change-transform w-full h-full p-8 rounded-xl grid grid-cols-12">
-        <div className="card-content col-span-8 flex flex-col gap-20">
+        <div className="card-content col-span-8 flex flex-col gap-24">
           <h3 className="text-[clamp(48px,6.5vw,96px)] font-semibold tracking-tight leading-none">
             {title}
           </h3>
@@ -122,7 +122,7 @@ function ServiceCard({
               {keywords.map((keyword, index) => (
                 <p
                   key={index}
-                  className="text-[clamp(10px,0.9vw,16px)] font-normal -mb-0.5"
+                  className="text-[clamp(11px,0.9vw,16px)] font-normal -mb-0.5"
                 >
                   {keyword}
                 </p>

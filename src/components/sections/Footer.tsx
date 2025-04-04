@@ -1,12 +1,15 @@
+import LiveClock from "../ui/LiveClock";
+
 export default function Footer() {
-  return (
+  return ( 
     <section id="footer" className="p-4">
       <footer className="flex flex-col justify-between gap-8 p-8 rounded-xl bg-stone-100 h-[800px]">
         <div className="flex justify-between w-full">
           <p className="font-semibold text-xl">
             Los Angeles, CA
           </p>
-          <p className="font-semibold text-xl">02:32:44 PM</p>
+
+          <LiveClock />
         </div>
 
         <div className="flex justify-center h-full">

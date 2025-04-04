@@ -1,14 +1,40 @@
 "use client";
+
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { CustomEase } from "gsap/CustomEase";
 import { IconMail, IconSend2 } from "@tabler/icons-react";
+import { useRef } from "react";
 import Image from "next/image";
 import { useContactModalStore } from "@/lib/zustand/stores";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(CustomEase);
 
 export default function FixedContactButton() {
   const isOpen = useContactModalStore((state) => state.isOpen);
   const open = useContactModalStore((state) => state.open);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  // const ease = CustomEase.create("custom", "0.64,0.57,0.67,1.53");
+
+  useGSAP(() => {
+    gsap.to(buttonRef.current, {
+      y: 10,
+      scale: 0.7,
+      opacity: 0,
+      duration: 0.5,
+      // ease: "custom",
+      scrollTrigger: {
+        trigger: "#footer",
+        start: "top 90%",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+  }, []);
 
   return (
     <button
+      ref={buttonRef}
       onClick={() => !isOpen && open()}
       className={`${
         isOpen ? "bg-[#FBC1D5]" : "bg-stone-100"
