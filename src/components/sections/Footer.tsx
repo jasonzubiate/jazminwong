@@ -1,21 +1,24 @@
 import LiveClock from "../ui/LiveClock";
 
 export default function Footer() {
-  return ( 
+  return (
     <section id="footer" className="p-4">
       <footer className="flex flex-col justify-between gap-8 p-8 rounded-xl bg-stone-100 h-[800px]">
         <div className="flex justify-between w-full">
-          <p className="font-semibold text-xl">
-            Los Angeles, CA
-          </p>
+          <p className="font-semibold text-xl">Los Angeles, CA</p>
 
           <LiveClock />
         </div>
 
-        <div className="flex justify-center h-full">
-          <h2 className="text-[64px] font-semibold mt-6">
-            Let&apos;s work <span className="text-[#FBC1D5]">together!</span>
+        <div ref={matterContainer} className="h-full relative">
+          <h2 className="text-[64px] font-semibold text-center leading-[0.85] top-6 left-1/2 -translate-x-1/2 absolute">
+            Let&apos;s work{" "}
+            <span className="text-[#FBC1D5] z-50">together!</span>
           </h2>
+
+          {/* <PhysicsContactButtons
+            containerRef={matterContainer as React.RefObject<HTMLDivElement>}
+          /> */}
         </div>
 
         <ul className="flex justify-between w-full">
