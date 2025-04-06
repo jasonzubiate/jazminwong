@@ -10,11 +10,15 @@ export default function Footer() {
           <LiveClock />
         </div>
 
-        <div ref={matterContainer} className="h-full relative">
+        <div className="h-full relative">
           <h2 className="text-[64px] font-semibold text-center leading-[0.85] top-6 left-1/2 -translate-x-1/2 absolute">
             Let&apos;s work{" "}
             <span className="text-[#FBC1D5] z-50">together!</span>
           </h2>
+
+          <div className="flex flex-col gap-2 lg:hidden">
+            
+          </div>
 
           {/* <PhysicsContactButtons
             containerRef={matterContainer as React.RefObject<HTMLDivElement>}

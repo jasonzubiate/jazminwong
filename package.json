@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@number-flow/react": "^0.5.8",
     "@tabler/icons-react": "^3.31.0",
     "lenis": "^1.2.3",
     "motion": "^12.6.3",

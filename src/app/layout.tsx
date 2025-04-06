@@ -19,7 +19,7 @@ export default function RootLayout({
           className={`${saans.className} font-semibold antialiased bg-[#FBC1D5] text-stone-900`}
         >
           {children}
-          <ContactModal />
+          {/* <ContactModal /> */}
           <FixedContactButton />
         </body>
       </ReactLenis>
