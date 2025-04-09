@@ -141,23 +141,23 @@ function ServiceCard({
           </div>
 
           {/* Image for tablet/desktop (shown on right) */}
-          <div className="hidden md:block md:col-span-4 h-full w-full rounded-lg overflow-hidden relative">
+          <div className="hidden md:block md:col-span-4 h-full w-full rounded-lg overflow-hidden relative pointer-events-none">
             <Image
               src={imageUrl}
               alt={title}
               fill
-              className="object-cover object-center"
+              className="object-cover object-center pointer-events-none"
             />
           </div>
         </div>
 
         {/* Image for mobile (shown at bottom) */}
-        <div className="block md:hidden w-full h-[200px] sm:h-[250px] rounded-lg overflow-hidden relative mt-6">
+        <div className="block md:hidden w-full h-[200px] sm:h-[250px] rounded-lg overflow-hidden relative mt-6 pointer-events-none">
           <Image
             src={imageUrl}
             alt={title}
             fill
-            className="object-cover object-center"
+            className="object-cover object-center pointer-events-none"
           />
         </div>
       </div>
