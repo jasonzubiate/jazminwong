@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { playfair_display } from "@/fonts";
 import Slider from "@/components/layout/Slider";
+import useWindowSize from "@/hooks/useWindowSize";
 
 // Image URLs array - replace these with your actual image URLs
 const sliderImages = [
@@ -23,20 +24,17 @@ const sliderImages = [
 
 export default function Hero() {
   const [initialScale, setInitialScale] = useState(0.2);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     // Set a larger initial scale on mobile devices
     const handleResize = () => {
-      setInitialScale(window.innerWidth < 768 ? 0.5 : 0.2);
+      setInitialScale(width < 768 ? 0.5 : 0.2);
     };
 
     // Set initial value
     handleResize();
-
-    // Update on resize
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [width]);
 
   return (
     <section className="pt-4 pb-24 h-screen relative">
@@ -98,8 +96,8 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="overflow-hidden absolute left-4 right-4 top-44 mt-2">
-          <div className="flex flex-col xl:flex-row justify-between items-center relative">
+        <div className="overflow-hidden absolute left-4 right-4 top-[12.5vw]">
+          <div className="flex flex-col lg:flex-row justify-between items-center relative">
             <div className="overflow-hidden">
               <motion.p
                 initial={{ y: 120 }}
@@ -109,7 +107,7 @@ export default function Hero() {
                   delay: 1.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="text-2xl font-semibold leading-[1.2] text-center xl:text-left"
+                className="text-[clamp(16px,1.5vw,32px)] font-semibold leading-[1.2] text-center xl:text-left"
               >
                 Content Creation and Digital Storytelling
               </motion.p>
@@ -124,9 +122,14 @@ export default function Hero() {
                   delay: 1.7,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="w-8 h-8 relative"
+                className="w-[clamp(24px,2vw,48px)] h-[clamp(24px,2vw,48px)] relative group"
               >
-                <Image src="/images/icons/star.png" alt="star" fill />
+                <Image
+                  src="/images/icons/star.png"
+                  alt="star"
+                  fill
+                  className="group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out"
+                />
               </motion.div>
             </div>
 
@@ -139,7 +142,7 @@ export default function Hero() {
                   delay: 1.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`${playfair_display.className} text-2xl font-normal -mt-1 leading-[1.2] text-center xl:text-left`}
+                className={`${playfair_display.className} text-[clamp(16px,1.5vw,32px)] font-normal -mt-1 leading-[1.2] text-center xl:text-left`}
               >
                 Scaling digital brands reach and impact
               </motion.p>
@@ -148,7 +151,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mt-48">
+      <div className="mt-[13vw]">
         <Slider images={sliderImages} />
       </div>
     </section>
