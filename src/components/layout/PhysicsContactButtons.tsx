@@ -3,6 +3,10 @@
 import Matter from "matter-js";
 import { useEffect } from "react";
 import { useContactModalStore } from "@/lib/zustand/stores";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function PhysicsContactButtons({
   containerRef,
@@ -50,7 +54,7 @@ export default function PhysicsContactButtons({
       },
     });
 
-    // Create three circles - positioned relative to container dimensions
+    // Create the CTAs (not added initially)
     const ctaA = Bodies.rectangle(containerWidth * 0.2, -330, 407, 170, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -64,6 +68,7 @@ export default function PhysicsContactButtons({
       },
       chamfer: { radius: 85 },
     });
+
     const ctaB = Bodies.rectangle(containerWidth * 0.4, -400, 549, 170, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -77,6 +82,7 @@ export default function PhysicsContactButtons({
       },
       chamfer: { radius: 85 },
     });
+
     const ctaC = Bodies.rectangle(containerWidth * 0.6, -200, 957, 170, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -90,6 +96,7 @@ export default function PhysicsContactButtons({
       },
       chamfer: { radius: 85 },
     });
+
     const ctaD = Bodies.rectangle(containerWidth * 0.5, -250, 507, 170, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -103,6 +110,7 @@ export default function PhysicsContactButtons({
       },
       chamfer: { radius: 85 },
     });
+
     const ctaE = Bodies.circle(containerWidth * 0.85, -260, 115, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -115,6 +123,7 @@ export default function PhysicsContactButtons({
         },
       },
     });
+
     const ctaF = Bodies.circle(containerWidth * 0.1, -150, 115, {
       friction: 0.3,
       frictionAir: 0.00001,
@@ -200,7 +209,7 @@ export default function PhysicsContactButtons({
       clickStartBody = null;
     });
 
-    // Create bounds (walls, ceiling, ground)
+    // Create bounds (walls, ceiling, ground) (not added initially)
     const wallThickness = 1;
 
     // Ground (bottom)
@@ -239,23 +248,41 @@ export default function PhysicsContactButtons({
       { isStatic: true, render: { fillStyle: "transparent" } }
     );
 
-    // Add all bodies to the world
-    Composite.add(engine.world, [
-      ctaA,
-      ctaB,
-      ctaC,
-      ctaD,
-      ctaE,
-      ctaF,
-      mouseConstraint,
-      ground,
-      leftWall,
-      rightWall,
-    ]);
+    // Create a flag to track if bodies have been added
+    let bodiesAdded = false;
 
-    const ceilingDelay = setTimeout(() => {
-      Composite.add(engine.world, ceiling);
-    }, 2000);
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 25%",
+      onEnter: () => {
+        // Only add bodies if they haven't been added yet
+        if (!bodiesAdded) {
+          // Add all bodies to the world
+          Composite.add(engine.world, [
+            ctaA,
+            ctaB,
+            ctaC,
+            ctaD,
+            ctaE,
+            ctaF,
+            mouseConstraint,
+            ground,
+            leftWall,
+            rightWall,
+          ]);
+
+          const ceilingDelay = setTimeout(() => {
+            Composite.add(engine.world, ceiling);
+          }, 2000);
+
+          // Set flag to true so this only happens once
+          bodiesAdded = true;
+
+          // Optionally, kill the ScrollTrigger since we don't need it anymore
+          scrollTrigger.kill();
+        }
+      },
+    });
 
     // Render the scene
     Render.run(render);
@@ -296,7 +323,13 @@ export default function PhysicsContactButtons({
       Engine.clear(engine);
       render.canvas.remove();
       render.textures = {};
-      clearTimeout(ceilingDelay);
+
+      if (scrollTrigger) {
+        if (scrollTrigger.vars.onEnter?.arguments[0]) {
+          clearTimeout(scrollTrigger.vars.onEnter.arguments[0]);
+        }
+      }
+      scrollTrigger.kill();
     };
   }, [containerRef]);
 
