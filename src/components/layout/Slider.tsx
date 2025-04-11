@@ -99,7 +99,7 @@ export default function Slider({ images }: SliderProps) {
     <div className="overflow-x-hidden py-12">
       <div
         ref={sliderRef}
-        className="w-max whitespace-nowrap flex gap-[clamp(8px,1vw,16px)] pr-[clamp(8px,1vw,16px)] cursor-grab"
+        className="w-max whitespace-nowrap flex gap-[clamp(8px,1vw,16px)] pr-[clamp(8px,1vw,16px)]"
       >
         {allImages.map((imageUrl, index) => (
           <motion.div

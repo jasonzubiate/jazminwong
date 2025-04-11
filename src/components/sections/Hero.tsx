@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { playfair_display } from "@/fonts";
 import Slider from "@/components/layout/Slider";
 import useWindowSize from "@/hooks/useWindowSize";
+import useDisableScroll from "@/hooks/useDisableScroll";
 
 // Image URLs array - replace these with your actual image URLs
 const sliderImages = [
@@ -23,6 +23,7 @@ const sliderImages = [
 ];
 
 export default function Hero() {
+  useDisableScroll();
   const { width } = useWindowSize();
   const initialScale = width < 768 ? 0.4 : 0.25;
 
