@@ -1,74 +1,126 @@
 "use client";
-import { Engine, RenderClones, Walls, Circle } from "react-matter-js";
+
+import Matter from "matter-js";
+import { useEffect, useRef } from "react";
 
 export default function PhysicsContactButtons({
   containerRef,
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
 }) {
-  const width = containerRef.current?.clientWidth;
-  const height = containerRef.current?.clientHeight;
-  const circleCount = 10;
-  const circleSize = height * 0.1;
+  useEffect(() => {
+    if (!containerRef.current) return;
 
-  const renderCircles = () => {
-    return [...Array(circleCount).keys()].map((num) => (
-      <Circle key={num} clone x={300} y={100} radius={circleSize} />
-    ));
-  };
+    const { Engine, Render, Runner, Bodies, Composite } = Matter;
 
-  return (
-    <>
-      <Engine options={{}}>
-        <RenderClones
-          enableMouse
-          options={{
-            width,
-            height,
-            background: "transparent",
-            wireframes: false,
-          }}
-        >
-          {renderCircles()}
-          <Walls x={0} y={0} width={width} height={height} wallWidth={1} />
-          {renderCircles()}
-        </RenderClones>
-      </Engine>
-      {/* <button className="matter-buttonpx-16 py-8 rounded-full bg-[#FBC1D5] absolute bottom-0 left-0 cursor-pointer">
-        <p className="text-[clamp(24px,6vw,96px)] tracking-tight ">
-          Send me a message
-        </p>
-      </button>
+    // Get container dimensions
+    const containerWidth = containerRef.current.clientWidth;
+    const containerHeight = containerRef.current.clientHeight;
 
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText("hey@jazminwong.com");
-        }}
-        className="matter-button flex flex-col items-start gap-4 px-8 py-6 rounded-xl bg-[#FBC1D5] absolute right-0 top-0"
-      >
-        <p className="text-[clamp(16px,3vw,32px)] text-[#4B1C2C] tracking-tight">
-          Email me
-        </p>
+    // Create an engine
+    const engine = Engine.create();
 
-        <p className="text-[clamp(24px,4vw,48px)] text-stone-100 leading-none">
-          hey@jazminwong.com
-        </p>
-      </button>
+    // Create a renderer that uses the containerRef element
+    const render = Render.create({
+      element: containerRef.current,
+      engine: engine,
+      options: {
+        width: containerWidth,
+        height: containerHeight,
+        wireframes: false,
+        background: "transparent",
+      },
+    });
 
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText("6263247748");
-        }}
-        className="matter-buttonflex flex-col items-start gap-4 px-8 py-6 rounded-xl bg-[#FBC1D5] absolute right-0 bottom-0"
-      >
-        <p className="text-[clamp(16px,3vw,32px)] text-[#4B1C2C] tracking-tight">
-          Call me
-        </p>
+    // Create two boxes - positioned relative to container dimensions
+    const boxA = Bodies.rectangle(
+      containerWidth / 2 - 50,
+      containerHeight / 3,
+      80,
+      80,
+      {
+        render: { fillStyle: "#4285F4" },
+        restitution: 0.5,
+      }
+    );
+    const boxB = Bodies.rectangle(
+      containerWidth / 2 + 50,
+      containerHeight / 4,
+      80,
+      80,
+      {
+        render: { fillStyle: "#EA4335" },
+        restitution: 0.5,
+      }
+    );
 
-        <p className="text-[clamp(24px,4vw,48px)] text-stone-100 leading-none">
-          +16263247748
-        </p>
-      </button> */}
-    </>
-  );
+    // Create bounds (walls, ceiling, ground)
+    const wallThickness = 1;
+
+    // Ground (bottom)
+    const ground = Bodies.rectangle(
+      containerWidth / 2,
+      containerHeight - wallThickness / 2,
+      containerWidth,
+      wallThickness,
+      { isStatic: true, render: { fillStyle: "transparent" } }
+    );
+
+    // Left wall
+    const leftWall = Bodies.rectangle(
+      wallThickness / 2,
+      containerHeight / 2,
+      wallThickness,
+      containerHeight,
+      { isStatic: true, render: { fillStyle: "transparent" } }
+    );
+
+    // Right wall
+    const rightWall = Bodies.rectangle(
+      containerWidth - wallThickness / 2,
+      containerHeight / 2,
+      wallThickness,
+      containerHeight,
+      { isStatic: true, render: { fillStyle: "transparent" } }
+    );
+
+    // Ceiling (top)
+    const ceiling = Bodies.rectangle(
+      containerWidth / 2,
+      wallThickness / 2,
+      containerWidth,
+      wallThickness,
+      { isStatic: true, render: { fillStyle: "transparent" } }
+    );
+
+    // Add all bodies to the world
+    Composite.add(engine.world, [
+      boxA,
+      boxB,
+      ground,
+      leftWall,
+      rightWall,
+      ceiling,
+    ]);
+
+    // Render the scene
+    Render.run(render);
+
+    // Create runner
+    const runner = Runner.create();
+
+    // Run the engine
+    Runner.run(runner, engine);
+
+    // Cleanup function for useEffect
+    return () => {
+      Render.stop(render);
+      Runner.stop(runner);
+      Engine.clear(engine);
+      render.canvas.remove();
+      render.textures = {};
+    };
+  }, [containerRef]);
+
+  return <div></div>;
 }

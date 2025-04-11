@@ -1,8 +1,14 @@
+"use client";
+
 import LiveClock from "../ui/LiveClock";
 import FooterCTAMobile from "../layout/FooterCTAMobile";
 import DesktopSocials from "../layout/DesktopSocials";
+import { useRef } from "react";
+import PhysicsContactButtons from "../layout/PhysicsContactButtons";
 
 export default function Footer() {
+  const matterContainer = useRef<HTMLDivElement>(null);
+
   return (
     <section id="footer" className="p-4">
       <footer className="flex flex-col justify-between gap-8 p-4 md:px-8 pt-8 pb-6 rounded-xl bg-stone-100 h-[600px] lg:h-[700px]">
@@ -14,15 +20,20 @@ export default function Footer() {
           <LiveClock />
         </div>
 
-        <div className="h-full relative">
+        <div
+          ref={matterContainer}
+          className="h-full relative overflow-hidden border-2 border-red-500"
+        >
           <h2 className="text-[clamp(50px,6vw,72px)] font-semibold text-center tracking-tight leading-[0.85] top-12 lg:top-6 left-1/2 -translate-x-1/2 absolute w-full">
             Let&apos;s work{" "}
             <span className="text-[#FBC1D5] z-50">together!</span>
           </h2>
 
-          {/* <PhysicsContactButtons
-            containerRef={matterContainer as React.RefObject<HTMLDivElement>}
-          /> */}
+          <div className="hidden lg:block">
+            <PhysicsContactButtons
+              containerRef={matterContainer as React.RefObject<HTMLDivElement>}
+            />
+          </div>
 
           <FooterCTAMobile />
         </div>
