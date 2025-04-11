@@ -6,6 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Observer } from "gsap/Observer";
+import useWindowSize from "@/hooks/useWindowSize";
 
 gsap.registerPlugin(useGSAP, Observer);
 
@@ -19,6 +20,7 @@ export default function Slider({ images }: SliderProps) {
   const xToRef = useRef<ReturnType<typeof gsap.quickTo> | null>(null);
   const itemValuesRef = useRef<number[]>([]);
   const sliderTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const { width } = useWindowSize();
 
   // Add the slider animation logic
   useGSAP(() => {
@@ -102,16 +104,16 @@ export default function Slider({ images }: SliderProps) {
         {allImages.map((imageUrl, index) => (
           <motion.div
             key={index}
-            initial={{ y: 30, opacity: 0, scale: 0.95 }}
+            initial={{ y: 50, opacity: 0, scale: 0.95 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             transition={{
-              duration: 2,
-              delay: 2.4,
+              duration: 2.5,
+              delay: width < 768 ? 2 : 2.4,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="slider-card p-3 rounded-xl bg-[#F5E1DA]"
           >
-            <div className="w-[clamp(260px,20vw,400px)] h-[clamp(300px,25vw,450px)] rounded-lg overflow-hidden relative">
+            <div className="w-[clamp(260px,20vw,400px)] h-[clamp(320px,25vw,450px)] rounded-lg overflow-hidden relative">
               <Image
                 src={imageUrl}
                 alt={`Slider image ${index + 1}`}

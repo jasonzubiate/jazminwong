@@ -23,21 +23,11 @@ const sliderImages = [
 ];
 
 export default function Hero() {
-  const [initialScale, setInitialScale] = useState(0.2);
   const { width } = useWindowSize();
-
-  useEffect(() => {
-    // Set a larger initial scale on mobile devices
-    const handleResize = () => {
-      setInitialScale(width < 768 ? 0.5 : 0.2);
-    };
-
-    // Set initial value
-    handleResize();
-  }, [width]);
+  const initialScale = width < 768 ? 0.4 : 0.25;
 
   return (
-    <section className="pt-4 pb-24 h-screen relative">
+    <section className="pt-4 pb-24 h-[100dvh] relative">
       <div className="px-4">
         <h1 className="hidden">Jazmin Wong</h1>
 
@@ -72,48 +62,73 @@ export default function Hero() {
               ease: [0.22, 1, 0.36, 1],
             },
           }}
-          className="overflow-hidden absolute left-4 right-4 origin-center will-change-transform"
+          className="absolute flex flex-col items-center justify-center sm:flex-row sm:gap-8 sm:justify-between left-4 right-4 origin-center will-change-transform"
         >
-          <motion.div
-            initial={{ y: 200 }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.2,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="w-full pointer-events-none mb-6"
-          >
-            <Image
-              src="/images/other/jazmin-wong-header.png"
-              alt="Hero"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto"
-              priority
-            />
-          </motion.div>
+          <div className="overflow-hidden -mb-3 sm:mb-0">
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="w-full pointer-events-none mb-6"
+            >
+              <Image
+                src="/images/other/jazmin.png"
+                alt="Hero"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-full h-auto sm:w-auto sm:h-[10vw]"
+                priority
+              />
+            </motion.div>
+          </div>
+
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{
+                duration: 1,
+                delay: width < 768 ? 0.225 : 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="w-full pointer-events-none mb-6"
+            >
+              <Image
+                src="/images/other/wong.png"
+                alt="Hero"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-auto h-[18.3vw] sm:h-[10vw]"
+                priority
+              />
+            </motion.div>
+          </div>
         </motion.div>
 
-        <div className="overflow-hidden absolute left-4 right-4 top-[12.5vw]">
-          <div className="flex flex-col lg:flex-row justify-between items-center relative">
+        <div className="overflow-hidden absolute left-4 right-4 top-[72vh] xs:top-[80vh] md:top-[12.5vw]">
+          <div className="flex flex-col gap-0.5 md:gap-0 md:flex-row justify-between items-center relative">
             <div className="overflow-hidden">
               <motion.p
                 initial={{ y: 120 }}
                 animate={{ y: 0 }}
                 transition={{
                   duration: 1.5,
-                  delay: 1.9,
+                  delay: width < 768 ? 2 : 1.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="text-[clamp(16px,1.5vw,32px)] font-semibold leading-[1.2] text-center xl:text-left"
+                className="text-[clamp(20px,1.6vw,32px)] font-semibold leading-[1.2] text-center md:text-left"
               >
-                Content Creation and Digital Storytelling
+                Content Creation & Digital Storytelling
               </motion.p>
             </div>
 
-            <div className="overflow-hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <div className="hidden md:block overflow-hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
               <motion.div
                 initial={{ y: 120 }}
                 animate={{ y: 0 }}
@@ -122,7 +137,7 @@ export default function Hero() {
                   delay: 1.7,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="w-[clamp(24px,2vw,48px)] h-[clamp(24px,2vw,48px)] relative group"
+                className="w-[clamp(28px,2vw,48px)] h-[clamp(28px,2vw,48px)] relative group"
               >
                 <Image
                   src="/images/icons/star.png"
@@ -139,10 +154,10 @@ export default function Hero() {
                 animate={{ y: 0 }}
                 transition={{
                   duration: 1.5,
-                  delay: 1.9,
+                  delay: width < 768 ? 2.05 : 1.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`${playfair_display.className} text-[clamp(16px,1.5vw,32px)] font-normal -mt-1 leading-[1.2] text-center xl:text-left`}
+                className={`${playfair_display.className} text-[clamp(20px,1.6vw,32px)] font-normal -mt-1 leading-[1.2] text-center md:text-left`}
               >
                 Scaling digital brands reach and impact
               </motion.p>
@@ -151,7 +166,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mt-[13vw]">
+      <div className="mt-[19vh] xs:mt-[23vh] sm:mt-[12dvh] md:mt-[14dvw]">
         <Slider images={sliderImages} />
       </div>
     </section>
