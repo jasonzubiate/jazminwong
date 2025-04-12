@@ -22,8 +22,8 @@ export default function RootLayout({
           <DocumentTitleChanger />
 
           {children}
-          {/* <ContactModal /> */}
-          {/* <FixedContactButton /> */}
+          <ContactModal />
+          <FixedContactButton />
         </body>
       </ReactLenis>
     </html>

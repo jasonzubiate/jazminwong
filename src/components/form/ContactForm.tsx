@@ -43,17 +43,21 @@ export default function ContactForm({
   return (
     <div
       ref={formRef as React.RefObject<HTMLDivElement>}
-      className="flex flex-col p-8 pb-32 bg-stone-100 rounded-xl"
+      className="flex flex-col"
     >
-      <h2 className="text-7xl font-semibold mb-8">Get in touch</h2>
+      <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold mb-8">
+        Get in touch
+      </h2>
 
-      <form className="flex gap-8">
-        <div className="flex flex-col gap-4 w-1/2">
-          <p className={`${playfair_display.className} text-2xl font-normal`}>
+      <form className="flex flex-col lg:flex-row gap-12 lg:gap-8">
+        <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-1/2">
+          <p
+            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+          >
             Your information
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
             <input
               type="text"
               name="name"
@@ -84,12 +88,14 @@ export default function ContactForm({
           />
         </div>
 
-        <div className="flex flex-col gap-4 w-1/2">
-          <p className={`${playfair_display.className} text-2xl font-normal`}>
+        <div className="flex flex-col gap-4 w-full lg:w-1/2">
+          <p
+            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+          >
             What can I do for you?
           </p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 lg:gap-3">
             {serviceOptions.map((service) => (
               <div
                 key={service}
@@ -106,11 +112,13 @@ export default function ContactForm({
             ))}
           </div>
 
-          <p className={`${playfair_display.className} text-2xl font-normal`}>
+          <p
+            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+          >
             Do you have a budget range?
           </p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 lg:gap-3">
             {budgetOptions.map((option) => (
               <div
                 key={option}
@@ -127,11 +135,13 @@ export default function ContactForm({
             ))}
           </div>
 
-          <p className={`${playfair_display.className} text-2xl font-normal`}>
+          <p
+            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+          >
             How did you hear about me?
           </p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 lg:gap-3">
             {referralOptions.map((referral) => (
               <div
                 key={referral}

@@ -89,7 +89,7 @@ export default function PhysicsContactButtons({
       restitution: 0.3,
       render: {
         sprite: {
-          texture: "/images/other/cta-send-me-a-message.png",
+          texture: "/images/other/cta-send-a-message.png",
           xScale: 0.5,
           yScale: 0.5,
         },
@@ -253,7 +253,7 @@ export default function PhysicsContactButtons({
 
     const scrollTrigger = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 25%",
+      start: "top 35%",
       onEnter: () => {
         // Only add bodies if they haven't been added yet
         if (!bodiesAdded) {

@@ -12,17 +12,17 @@ export const socialLinks: SocialLink[] = [
   },
   {
     title: "YouTube",
-    url: "https://www.youtube.com/",
+    url: "https://www.youtube.com/@jazziwong",
     videoUrl: "/youtube.mov",
   },
   {
     title: "Unsplash",
-    url: "https://unsplash.com/",
+    url: "https://unsplash.com/@jazziwong",
     videoUrl: "/unsplash.mov",
   },
   {
     title: "TikTok",
-    url: "https://www.tiktok.com/",
+    url: "https://www.tiktok.com/@jazziwong",
     videoUrl: "/tiktok.mov",
   },
 ];
