@@ -160,7 +160,7 @@ export default function Hero() {
                 }}
                 className={`${playfair_display.className} text-[clamp(20px,1.6vw,32px)] font-normal -mt-1 leading-[1.2] text-center md:text-left`}
               >
-                Scaling digital brands reach and impact
+                Scaling brands reach and impact
               </motion.p>
             </div>
           </div>

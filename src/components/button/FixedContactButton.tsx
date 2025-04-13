@@ -22,7 +22,7 @@ export default function FixedContactButton() {
       ref={buttonRef}
       className={`${
         isOpen ? "bg-[#FBC1D5]" : "bg-stone-100"
-      } flex items-center gap-1 xl:gap-3 fixed bottom-6 xl:bottom-8 left-1/2 -translate-x-1/2 pl-1 py-1 pr-4 xl:pr-6 rounded-full cursor-pointer group z-999 transition-colors duration-700 delay-100 ease-in-out`}
+      } flex items-center gap-2 xl:gap-3 fixed bottom-6 xl:bottom-8 left-1/2 -translate-x-1/2 pl-1 py-1 pr-4 xl:pr-6 rounded-full cursor-pointer group z-999 transition-colors duration-700 delay-100 ease-in-out`}
     >
       <div className="h-12 xl:h-14 w-12 xl:w-14 relative rounded-full">
         <div
@@ -74,12 +74,12 @@ export default function FixedContactButton() {
         </span>
       </div>
 
-      <div className="overflow-hidden h-8">
+      <div className="overflow-hidden h-7 lg:h-8">
         <div className="flex flex-col transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:-translate-y-1/2">
-          <span className="text-xl xl:text-2xl font-semibold">
+          <span className="text-xl lg:text-2xl font-semibold">
             {isOpen ? "Submit" : "Contact"}
           </span>
-          <span className="text-2xl font-semibold">
+          <span className="text-xl lg:text-2xl font-semibold">
             {isOpen ? "Submit" : "Contact"}
           </span>
         </div>
