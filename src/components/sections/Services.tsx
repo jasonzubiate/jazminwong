@@ -112,7 +112,7 @@ function ServiceCard({
   index,
 }: ServiceCardProps) {
   return (
-    <div className="card relative pb-4" id={`card-${index + 1}`}>
+    <div className="card relative pb-4" id={`card-${index}`}>
       <div className="card-inner relative will-change-transform w-full h-full p-4 sm:p-6 md:p-8 rounded-xl">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-0">
           <div className="card-content col-span-1 md:col-span-8 flex flex-col gap-6 sm:gap-10 md:gap-16 lg:gap-24">

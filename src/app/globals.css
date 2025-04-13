@@ -24,20 +24,20 @@
   }
 }
 
+#card-0 .card-inner {
+  @apply bg-[#FFDBE8];
+}
+
 #card-1 .card-inner {
-  @apply bg-[#FFD3B6];
+  @apply bg-[#BADD7F];
 }
 
 #card-2 .card-inner {
-  @apply bg-[#FF6B6B];
+  @apply bg-[#FFEBAE];
 }
 
 #card-3 .card-inner {
-  @apply bg-stone-100;
-}
-
-#card-4 .card-inner {
-  @apply bg-stone-900 text-stone-100;
+  @apply bg-[#A7B5FE];
 }
 
 @keyframes blink {

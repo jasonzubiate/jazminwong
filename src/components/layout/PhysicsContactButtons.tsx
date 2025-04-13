@@ -271,7 +271,7 @@ export default function PhysicsContactButtons({
             rightWall,
           ]);
 
-          const ceilingDelay = setTimeout(() => {
+          setTimeout(() => {
             Composite.add(engine.world, ceiling);
           }, 2000);
 
@@ -324,14 +324,9 @@ export default function PhysicsContactButtons({
       render.canvas.remove();
       render.textures = {};
 
-      if (scrollTrigger) {
-        if (scrollTrigger.vars.onEnter?.arguments[0]) {
-          clearTimeout(scrollTrigger.vars.onEnter.arguments[0]);
-        }
-      }
       scrollTrigger.kill();
     };
-  }, [containerRef]);
+  }, [containerRef, open]);
 
   return <div></div>;
 }

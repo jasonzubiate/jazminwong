@@ -7,7 +7,7 @@ import NumberFlow from "@number-flow/react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
+// import SplitType from "split-type";
 import { funFacts } from "@/data/funFacts";
 import { playfair_display } from "@/fonts";
 
@@ -17,73 +17,73 @@ export default function About() {
   const [currentFunFact, setCurrentFunFact] = useState(funFacts[0]);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
 
-  useGSAP(() => {
-    if (!paragraphRef.current) return;
+  // useGSAP(() => {
+  //   if (!paragraphRef.current) return;
 
-    const text = new SplitType(paragraphRef.current, {
-      types: "lines",
-    });
-    console.log(text.lines);
+  //   const text = new SplitType(paragraphRef.current, {
+  //     types: "lines",
+  //   });
+  //   console.log(text.lines);
 
-    const lines = document.querySelectorAll("#about-p .line");
+  //   const lines = document.querySelectorAll("#about-p .line");
 
-    gsap.from(lines, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      stagger: { amount: 0.1 },
-      scrollTrigger: {
-        trigger: paragraphRef.current,
-        start: "top 80%",
-        end: "+=100%",
-        scrub: true,
-      },
-    });
-  }, []);
-
-  // Add a ref to store the timeout ID
-  // const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Function to set up the auto-rotation timeout
-  // const setupAutoRotation = useCallback(() => {
-  //   // Clear any existing timeout first
-  //   if (timeoutRef.current) {
-  //     clearTimeout(timeoutRef.current);
-  //   }
-
-  //   // Set a new timeout
-  //   timeoutRef.current = setTimeout(() => {
-  //     incrementFunFact();
-  //   }, 5000);
+  //   gsap.from(lines, {
+  //     opacity: 0,
+  //     y: 20,
+  //     duration: 0.5,
+  //     stagger: { amount: 0.1 },
+  //     scrollTrigger: {
+  //       trigger: paragraphRef.current,
+  //       start: "top 80%",
+  //       end: "+=100%",
+  //       scrub: true,
+  //     },
+  //   });
   // }, []);
 
-  // const incrementFunFact = () => {
-  //   setCurrentFunFact((prev) => {
-  //     const currentIndex = funFacts.indexOf(prev);
-  //     return funFacts[(currentIndex + 1) % funFacts.length];
-  //   });
-  //   setupAutoRotation(); // Reset the timeout after manual increment
-  // };
+  // Add a ref to store the timeout ID
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // const decrementFunFact = () => {
-  //   setCurrentFunFact((prev) => {
-  //     const currentIndex = funFacts.indexOf(prev);
-  //     return funFacts[(currentIndex - 1 + funFacts.length) % funFacts.length];
-  //   });
-  //   setupAutoRotation(); // Reset the timeout after manual decrement
-  // };
+  // Function to set up the auto-rotation timeout
+  const setupAutoRotation = useCallback(() => {
+    // Clear any existing timeout first
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set a new timeout
+    timeoutRef.current = setTimeout(() => {
+      incrementFunFact();
+    }, 5000);
+  }, []);
+
+  const incrementFunFact = () => {
+    setCurrentFunFact((prev) => {
+      const currentIndex = funFacts.indexOf(prev);
+      return funFacts[(currentIndex + 1) % funFacts.length];
+    });
+    setupAutoRotation(); // Reset the timeout after manual increment
+  };
+
+  const decrementFunFact = () => {
+    setCurrentFunFact((prev) => {
+      const currentIndex = funFacts.indexOf(prev);
+      return funFacts[(currentIndex - 1 + funFacts.length) % funFacts.length];
+    });
+    setupAutoRotation(); // Reset the timeout after manual decrement
+  };
 
   // Set up the initial timeout when component mounts
-  // useEffect(() => {
-  //   setupAutoRotation();
+  useEffect(() => {
+    setupAutoRotation();
 
-  //   // Clean up the timeout when component unmounts
-  //   return () => {
-  //     if (timeoutRef.current) {
-  //       clearTimeout(timeoutRef.current);
-  //     }
-  //   };
-  // }, [setupAutoRotation]);
+    // Clean up the timeout when component unmounts
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [setupAutoRotation]);
 
   return (
     <section id="about" className="px-4 py-24">
@@ -108,7 +108,7 @@ export default function About() {
         </p>
       </div>
 
-      {/* <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
         <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
           <div className="flex justify-between items-center pb-3 w-full border-b border-stone-900">
             <h3 className="text-lg font-semibold">Fun Facts</h3>
@@ -179,7 +179,7 @@ export default function About() {
             />
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }

@@ -4,10 +4,14 @@ import { motion } from "motion/react";
 import { IconMail, IconSend2 } from "@tabler/icons-react";
 import Image from "next/image";
 import { useContactModalStore } from "@/lib/zustand/stores";
+import useWindowSize from "@/hooks/useWindowSize";
+import { useRef } from "react";
 
 export default function FixedContactButton() {
   const isOpen = useContactModalStore((state) => state.isOpen);
   const open = useContactModalStore((state) => state.open);
+  const { width } = useWindowSize();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <motion.button
@@ -15,6 +19,7 @@ export default function FixedContactButton() {
       animate={{ y: 0, scale: 1 }}
       transition={{ duration: 1, delay: 3, ease: [0.22, 1, 0.36, 1] }}
       onClick={() => !isOpen && open()}
+      ref={buttonRef}
       className={`${
         isOpen ? "bg-[#FBC1D5]" : "bg-stone-100"
       } flex items-center gap-2 xl:gap-3 fixed bottom-6 xl:bottom-8 left-1/2 -translate-x-1/2 pl-1 py-1 pr-4 xl:pr-6 rounded-full cursor-pointer group z-999 transition-colors duration-700 delay-100 ease-in-out`}
@@ -39,8 +44,9 @@ export default function FixedContactButton() {
           } flex items-center justify-center h-12 xl:h-14 w-12 xl:w-14 bg-[#FBC1D5] rounded-full scale-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-100 transition-all duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)]`}
         >
           <IconMail
-            className="text-stone-900 text-2xl xl:text-5xl"
+            className="text-stone-900"
             stroke={2.5}
+            size={width < 728 ? 20 : 32}
           />
         </span>
 
@@ -54,12 +60,14 @@ export default function FixedContactButton() {
               <IconSend2
                 className="text-stone-900 text-2xl xl:text-5xl"
                 stroke={2.5}
+                size={width < 728 ? 20 : 32}
               />
             </div>
             <div className="flex items-center justify-center w-12 xl:w-14">
               <IconSend2
                 className="text-stone-900 text-2xl xl:text-5xl"
                 stroke={2.5}
+                size={width < 728 ? 20 : 32}
               />
             </div>
           </div>
