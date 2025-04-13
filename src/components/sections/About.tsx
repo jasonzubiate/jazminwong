@@ -86,7 +86,7 @@ export default function About() {
   }, [setupAutoRotation]);
 
   return (
-    <section id="about" className="px-4 py-20 lg:py-24">
+    <section id="about" className="px-4 pb-20 lg:py-24">
       <p className="text-sm font-semibold lg:hidden">(About Jazzi)</p>
 
       <div className="mb-24 relative">
