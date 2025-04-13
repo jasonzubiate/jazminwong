@@ -79,7 +79,7 @@ export default function Services() {
   }, [isMobile]); // Add isMobile as a dependency to re-run when screen size changes
 
   return (
-    <section className="px-4 py-24">
+    <section className="px-4 pt-20 pb-12 lg:py-24">
       <h2
         id="services-title"
         className="text-lg xl:text-3xl font-semibold mb-8 relative"

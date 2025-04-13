@@ -86,19 +86,18 @@ export default function About() {
   }, [setupAutoRotation]);
 
   return (
-    <section id="about" className="px-4 py-24">
+    <section id="about" className="px-4 py-20 lg:py-24">
       <p className="text-sm font-semibold lg:hidden">(About Jazzi)</p>
 
       <div className="mb-24 relative">
-        <sup className="text-sm font-semibold align-super absolute top-3 left-0 hidden lg:block">
+        <sup className="text-[clamp(12px,1.1vw,28px)] font-semibold align-super absolute lg:top-5 left-0 hidden lg:block">
           (About Jazzi)
         </sup>
 
         <p
           id="about-p"
           ref={paragraphRef}
-          className="text-xl md:text-5xl xl:text-[54px] font-semibold mt-6 lg:indent-40"
-          style={{ fontKerning: "none" }}
+          className="text-[clamp(20px,4vw,54px)] font-semibold mt-6 lg:indent-40 leading-[1.2] md:leading-[1.1]"
         >
           I&apos;m a passionate marketing enthusiast driven by creativity and
           curiosity. While I&apos;m early in my professional journey, my love
@@ -108,8 +107,8 @@ export default function About() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
-        <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 lg:gap-4">
+        <div className="col-span-1 md:col-span-2 flex flex-col gap-6 mb-12 lg:mb-0">
           <div className="flex justify-between items-center pb-3 w-full border-b border-stone-900">
             <h3 className="text-lg font-semibold">Fun Facts</h3>
 
@@ -125,7 +124,7 @@ export default function About() {
           <div className="flex gap-3">
             <button
               onClick={decrementFunFact}
-              className="flex w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group"
+              className="flex items-center w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group"
             >
               <div className="flex transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:-translate-x-1/2">
                 <div className="flex items-center justify-center w-14 xl:w-12">
@@ -138,7 +137,7 @@ export default function About() {
             </button>
             <button
               onClick={incrementFunFact}
-              className="flex justify-end w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group"
+              className="flex items-center justify-end w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group"
             >
               <div className="flex justify-end transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:translate-x-1/2">
                 <div className="flex items-center justify-center w-14 xl:w-12">
@@ -151,7 +150,6 @@ export default function About() {
             </button>
           </div>
         </div>
-
 
         <div className="hidden lg:block lg:col-span-1"></div>
 

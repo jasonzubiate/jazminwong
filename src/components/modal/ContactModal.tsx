@@ -42,7 +42,7 @@ export default function ContactModal() {
           <IconX className="w-5 h-5 text-stene-900" stroke={3} />
         </button>
         
-        <div className="h-full overflow-y-auto lg:pb-24">
+        <div className="h-full overflow-y-auto mb-20 lg:pb-24">
           <ContactForm formRef={formRef as React.RefObject<HTMLElement>} />
         </div>
       </motion.div>

@@ -28,7 +28,7 @@ export default function Hero() {
   const initialScale = width < 768 ? 0.4 : 0.25;
 
   return (
-    <section className="pt-4 pb-24 h-[100dvh] relative">
+    <section className="pt-4 pb-20 lg:pb-24 h-screen relative">
       <div className="px-4">
         <h1 className="hidden">Jazmin Wong</h1>
 
@@ -167,7 +167,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mt-[19vh] xs:mt-[23vh] sm:mt-[12dvh] md:mt-[14dvw]">
+      <div className="mt-[19vh] xs:mt-[23vh] sm:mt-[12vh] md:mt-[14vw]">
         <Slider images={sliderImages} />
       </div>
     </section>
