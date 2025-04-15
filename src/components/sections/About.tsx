@@ -173,7 +173,11 @@ export default function About() {
               src={currentFunFact.imageUrl}
               alt={currentFunFact.description}
               fill
-              className="object-center object-cover"
+              className={`${
+                currentFunFact.numbericalValue === 31
+                  ? "object-top"
+                  : "object-center"
+              } object-cover`}
             />
           </div>
         </div>

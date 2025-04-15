@@ -31,7 +31,7 @@ export default function FixedContactButton() {
           } w-full h-full rounded-full overflow-hidden relative group-hover:opacity-0 group-hover:scale-70 transition-all duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)]`}
         >
           <Image
-            src="https://plus.unsplash.com/premium_photo-1690587673708-d6ba8a1579a5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGhlYWRzaG90fGVufDB8fDB8fHww"
+            src="https://www.dropbox.com/scl/fi/84zrvrkpuccuzhi1xaztk/Photo-Apr-12-2025-9-46-02-AM.jpg?rlkey=egv4u4n1qpaws7ff7sj8maoqc&st=sqs6nl8x&dl=1"
             alt="logo"
             fill
             className="w-full h-auto object-cover object-center"

@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "plus.unsplash.com",
       },
+      {
+        hostname: "www.dropbox.com",
+      },
     ],
   },
 };
