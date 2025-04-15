@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "digital content",
     "social media strategy",
   ], // Add your keywords here
-  authors: [{ name: "Jazmin Wong", url: "https://www.jazminwong.com" }],
+  authors: [{ name: "Jazmin Wong", url: "https://www.jazzicreates.tv" }],
   creator: "Jazmin Wong",
   publisher: "Jazmin Wong",
 
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     title: "Creative Content Strategist",
     description:
       "Jazzi is a creative content strategist with a passion for creating engaging and effective content across digital platforms.",
-    url: "https://www.jazminwong.com",
+    url: "https://www.jazzicreates.tv",
     siteName: "jazminwong.com",
     images: [
       {
-        url: "https://www.jazminwong.com/images/og-image.jpg",
+        url: "https://www.dropbox.com/scl/fi/g08usoqmv0ara7ww4ql91/JAZMIN.png?rlkey=pc4zj5pncj0jrp4llz4gudidl&st=x06d8tnq&dl=1",
         width: 1200,
         height: 630,
         alt: "Jazmin Wong - Creative Content Strategist",
@@ -48,13 +48,15 @@ export const metadata: Metadata = {
     title: "Jazmin Wong | Creative Content Strategist",
     description:
       "Jazzi is a creative content strategist with a passion for creating engaging and effective content across digital platforms.",
-    creator: "@jazminwong",
-    images: ["https://www.jazminwong.com/images/twitter-card.jpg"],
+    creator: "@jazminnwong",
+    images: [
+      "https://www.dropbox.com/scl/fi/g08usoqmv0ara7ww4ql91/JAZMIN.png?rlkey=pc4zj5pncj0jrp4llz4gudidl&st=x06d8tnq&dl=1",
+    ],
   },
 
   // Canonical URL
   alternates: {
-    canonical: "https://www.jazminwong.com",
+    canonical: "https://www.jazzicreates.tv",
   },
 
   // Robots
