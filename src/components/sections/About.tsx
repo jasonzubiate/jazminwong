@@ -41,22 +41,6 @@ export default function About() {
   //   });
   // }, []);
 
-  // Add a ref to store the timeout ID
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Function to set up the auto-rotation timeout
-  const setupAutoRotation = useCallback(() => {
-    // Clear any existing timeout first
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    // Set a new timeout
-    timeoutRef.current = setTimeout(() => {
-      incrementFunFact();
-    }, 5000);
-  }, []);
-
   const incrementFunFact = () => {
     setCurrentFunFact((prev) => {
       const currentIndex = funFacts.indexOf(prev);
@@ -72,6 +56,22 @@ export default function About() {
     });
     setupAutoRotation(); // Reset the timeout after manual decrement
   };
+
+  // Add a ref to store the timeout ID
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Function to set up the auto-rotation timeout
+  const setupAutoRotation = useCallback(() => {
+    // Clear any existing timeout first
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set a new timeout
+    timeoutRef.current = setTimeout(() => {
+      incrementFunFact();
+    }, 5000);
+  }, []);
 
   // Set up the initial timeout when component mounts
   useEffect(() => {

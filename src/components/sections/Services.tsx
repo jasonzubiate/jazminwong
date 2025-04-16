@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -108,7 +108,7 @@ function ServiceCard({
   title,
   description,
   keywords,
-  imageUrl,
+  // imageUrl,
   index,
 }: ServiceCardProps) {
   return (
