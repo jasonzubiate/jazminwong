@@ -50,7 +50,12 @@ export const metadata: Metadata = {
       "Jazzi is a creative content strategist with a passion for creating engaging and effective content across digital platforms.",
     creator: "@jazminnwong",
     images: [
-      "https://www.dropbox.com/scl/fi/g08usoqmv0ara7ww4ql91/JAZMIN.png?rlkey=pc4zj5pncj0jrp4llz4gudidl&st=x06d8tnq&dl=1",
+      {
+        url: "/src/app/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jazmin Wong - Creative Content Strategist",
+      },
     ],
   },
 
