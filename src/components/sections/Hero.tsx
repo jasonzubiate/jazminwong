@@ -8,17 +8,16 @@ import useWindowSize from "@/hooks/useWindowSize";
 import useDisableScroll from "@/hooks/useDisableScroll";
 
 const sliderImages = [
-  "/images/hero/image-1.avif",
-  "/images/hero/image-2.avif",
-  "/images/hero/image-3.avif",
-  "/images/hero/image-4.avif",
-  "/images/hero/image-5.avif",
-  "/images/hero/image-6.avif",
-  "/images/hero/image-7.avif",
-  "/images/hero/image-8.avif",
-  "/images/hero/image-9.avif",
-  "/images/hero/image-10.avif",
-  "/images/hero/image-11.avif",
+  "/images/hero/image-1.jpg",
+  "/images/hero/image-2.jpg",
+  "/images/hero/image-3.jpg",
+  "/images/hero/image-4.jpg",
+  "/images/hero/image-5.jpg",
+  "/images/hero/image-6.jpg",
+  "/images/hero/image-7.jpg",
+  "/images/hero/image-8.jpg",
+  "/images/hero/image-9.jpg",
+  "/images/hero/image-10.jpg",
 ];
 
 export default function Hero() {
