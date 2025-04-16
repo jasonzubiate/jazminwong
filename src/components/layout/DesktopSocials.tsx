@@ -15,6 +15,10 @@ export default function DesktopSocials() {
   const handleMouseEnter = (index: number) => {
     const video = videoRefs.current[index];
     if (video) {
+      // Only set the src when user hovers
+      if (!video.src) {
+        video.src = socialLinks[index].videoUrl;
+      }
       video.play().catch((err) => console.log("Video play error:", err));
     }
   };
@@ -61,9 +65,10 @@ export default function DesktopSocials() {
                 ref={(el) => {
                   videoRefs.current[index] = el;
                 }}
-                src={social.videoUrl}
+                data-src={social.videoUrl}
                 muted
                 loop
+                preload="none"
                 aria-hidden="true"
                 className="w-full h-full object-cover rounded"
               ></video>

@@ -117,7 +117,9 @@ export default function Slider({ images }: SliderProps) {
               <Image
                 src={imageUrl}
                 alt={`Slider image ${index + 1}`}
-                fill
+                width={400}
+                height={450}
+                sizes="(max-width: 640px) 260px, (max-width: 1024px) 20vw, 400px"
                 className="object-cover object-center pointer-events-none"
               />
             </div>
