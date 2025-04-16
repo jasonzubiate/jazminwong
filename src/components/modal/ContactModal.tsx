@@ -37,12 +37,12 @@ export default function ContactModal() {
       >
         <button
           onClick={close}
-          className="fixed top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-[#FBC1D5] z-999"
+          className="lg:hidden fixed top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-[#FBC1D5] z-999"
         >
           <IconX className="w-5 h-5 text-stene-900" stroke={3} />
         </button>
         
-        <div className="h-full overflow-y-auto mb-20 lg:pb-24">
+        <div className="h-full overflow-y-auto pb-20 lg:pb-24">
           <ContactForm formRef={formRef as React.RefObject<HTMLElement>} />
         </div>
       </motion.div>

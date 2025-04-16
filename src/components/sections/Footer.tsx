@@ -6,14 +6,19 @@ import DesktopSocials from "../layout/DesktopSocials";
 import { useRef } from "react";
 import PhysicsContactButtons from "../layout/PhysicsContactButtons";
 import useWindowSize from "@/hooks/useWindowSize";
+import { useFooter } from "@/contexts/footer-context";
 
 export default function Footer() {
   const matterContainer = useRef<HTMLDivElement>(null);
   const { width } = useWindowSize();
+  const { footerRef } = useFooter();
 
   return (
     <section id="footer" className="p-4">
-      <footer className="flex flex-col justify-between gap-8 p-4 md:px-8 pt-8 pb-6 rounded-xl bg-stone-100 h-[600px] lg:h-[clamp(700px,95vh,900px)]">
+      <footer
+        ref={footerRef}
+        className="flex flex-col justify-between gap-8 p-4 md:px-8 pt-8 pb-6 rounded-xl bg-stone-100 h-[600px] lg:h-[clamp(700px,95vh,900px)]"
+      >
         <div className="flex justify-between w-full">
           <p className="font-semibold text-[clamp(16px,1.6vw,24px)]">
             Los Angeles, CA

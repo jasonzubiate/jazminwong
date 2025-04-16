@@ -5,6 +5,7 @@ import DocumentTitleChanger from "@/components/layout/DocumentTitleChanger";
 import ContactModal from "@/components/modal/ContactModal";
 import FixedContactButton from "@/components/button/FixedContactButton";
 import "./globals.css";
+import { FooterProvider } from "@/contexts/footer-context";
 
 export { metadata };
 
@@ -15,17 +16,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReactLenis root>
-        <body
-          className={`${saans.className} font-semibold antialiased bg-[#FBC1D5] text-stone-900`}
-        >
-          <DocumentTitleChanger />
+      <FooterProvider>
+        <ReactLenis root>
+          <body
+            className={`${saans.className} font-semibold antialiased bg-[#FBC1D5] text-stone-900`}
+          >
+            <DocumentTitleChanger />
 
-          {children}
-          <ContactModal />
-          <FixedContactButton />
-        </body>
-      </ReactLenis>
+            {children}
+            <ContactModal />
+            <FixedContactButton />
+          </body>
+        </ReactLenis>
+      </FooterProvider>
     </html>
   );
 }

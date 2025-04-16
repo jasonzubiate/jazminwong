@@ -1,23 +1,38 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { IconMail, IconSend2 } from "@tabler/icons-react";
 import Image from "next/image";
 import { useContactModalStore } from "@/lib/zustand/stores";
 import useWindowSize from "@/hooks/useWindowSize";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useFooter } from "@/contexts/footer-context";
 
 export default function FixedContactButton() {
   const isOpen = useContactModalStore((state) => state.isOpen);
   const open = useContactModalStore((state) => state.open);
   const { width } = useWindowSize();
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const { footerRef } = useFooter();
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  const isInView = useInView(footerRef, { amount: 0.2 });
+
+  useEffect(() => {
+    if (isInView) {
+      setIsInitialLoad(false);
+    }
+  }, [isInView]);
 
   return (
     <motion.button
       initial={{ y: 200, scale: 0.8 }}
-      animate={{ y: 0, scale: 1 }}
-      transition={{ duration: 1, delay: 3, ease: [0.22, 1, 0.36, 1] }}
+      animate={isInView ? { y: 200, scale: 0.8 } : { y: 0, scale: 1 }}
+      transition={{
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
+        delay: isInitialLoad ? 3 : 0,
+      }}
       onClick={() => !isOpen && open()}
       ref={buttonRef}
       className={`${
