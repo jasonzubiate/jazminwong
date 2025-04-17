@@ -142,6 +142,7 @@ export default function Hero() {
                   src="/images/icons/star.png"
                   alt="star"
                   fill
+                  sizes="(max-width: 768px) 28px, 48px"
                   className="group-hover:rotate-[360deg] transition-transform duration-500 ease-in-out"
                 />
               </motion.div>

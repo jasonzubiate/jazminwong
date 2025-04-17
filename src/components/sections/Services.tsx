@@ -147,6 +147,7 @@ function ServiceCard({
               src={imageUrl}
               alt={title}
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover object-center pointer-events-none"
             />
           </div>
@@ -158,6 +159,7 @@ function ServiceCard({
             src={imageUrl}
             alt={title}
             fill
+            sizes="100vw"
             className="object-cover object-center pointer-events-none"
           />
         </div>

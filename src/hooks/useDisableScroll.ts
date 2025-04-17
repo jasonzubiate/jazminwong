@@ -24,8 +24,6 @@ export default function useDisableScroll() {
       document.body.style.height = originalHeight;
       document.body.style.position = originalPosition;
       document.body.style.width = "";
-
-      console.log("Scrolling re-enabled"); // Debug log
     }, 3000);
 
     // Cleanup function in case component unmounts before timeout
@@ -35,8 +33,6 @@ export default function useDisableScroll() {
       document.body.style.height = originalHeight;
       document.body.style.position = originalPosition;
       document.body.style.width = "";
-
-      console.log("Cleanup: scrolling restored"); // Debug log
     };
   }, []);
 }
