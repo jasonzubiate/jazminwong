@@ -1,12 +1,13 @@
 "use client";
 
-// import Image from "next/image";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { services } from "@/data/services";
 import { playfair_display } from "@/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
 
@@ -108,7 +109,7 @@ function ServiceCard({
   title,
   description,
   keywords,
-  // imageUrl,
+  imageUrl,
   index,
 }: ServiceCardProps) {
   return (
@@ -142,23 +143,23 @@ function ServiceCard({
 
           {/* Image for tablet/desktop (shown on right) */}
           <div className="hidden md:block md:col-span-4 h-full w-full bg-stone-900 rounded-lg overflow-hidden relative pointer-events-none">
-            {/* <Image
+            <Image
               src={imageUrl}
               alt={title}
               fill
               className="object-cover object-center pointer-events-none"
-            /> */}
+            />
           </div>
         </div>
 
         {/* Image for mobile (shown at bottom) */}
         <div className="block md:hidden w-full h-[200px] sm:h-[250px] bg-stone-900 rounded-lg overflow-hidden relative mt-6 pointer-events-none">
-          {/* <Image
+          <Image
             src={imageUrl}
             alt={title}
             fill
             className="object-cover object-center pointer-events-none"
-          /> */}
+          />
         </div>
       </div>
     </div>

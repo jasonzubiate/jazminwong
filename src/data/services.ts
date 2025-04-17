@@ -18,8 +18,7 @@ export const services: Service[] = [
       "Brand Advocacy",
       "Organic Reach",
     ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1740490278517-21ec451914f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzV8fGZhY2UlMjBvaWx8ZW58MHx8MHx8fDA%3D",
+    imageUrl: "/images/services/image-1.jpg",
   },
   {
     title: "Photography",
@@ -33,8 +32,7 @@ export const services: Service[] = [
       "Professional Photography",
       "Creative Direction",
     ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1742516298488-82b32c6417ab?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/images/services/image-2.jpg",
   },
   {
     title: "Short-Form Video",
@@ -48,8 +46,7 @@ export const services: Service[] = [
       "Video Production",
       "Creative Storytelling",
     ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1742517875869-2ae583150a0b?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/images/services/image-3.jpg",
   },
   {
     title: "Content Strategy",
@@ -63,7 +60,6 @@ export const services: Service[] = [
       "Verbal Identity",
       "Personality Traits",
     ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1624969862293-b749659ccc4e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/images/services/image-4.jpg",
   },
 ];
