@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import NumberFlow from "@number-flow/react";
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function About() {
   const [currentFunFact, setCurrentFunFact] = useState(funFacts[0]);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const [progress, setProgress] = useState(0);
 
   // useGSAP(() => {
   //   if (!paragraphRef.current) return;
@@ -59,6 +61,8 @@ export default function About() {
 
   // Add a ref to store the timeout ID
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const animationRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
 
   // Function to set up the auto-rotation timeout
   const setupAutoRotation = useCallback(() => {
@@ -66,6 +70,30 @@ export default function About() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+
+    // Cancel any ongoing animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+
+    // Reset progress
+    setProgress(0);
+    startTimeRef.current = Date.now();
+
+    // Set up animation frame for progress
+    const animateProgress = () => {
+      if (!startTimeRef.current) return;
+
+      const elapsed = Date.now() - startTimeRef.current;
+      const newProgress = Math.min(elapsed / 5000, 1);
+      setProgress(newProgress);
+
+      if (newProgress < 1) {
+        animationRef.current = requestAnimationFrame(animateProgress);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animateProgress);
 
     // Set a new timeout
     timeoutRef.current = setTimeout(() => {
@@ -81,6 +109,9 @@ export default function About() {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
+      }
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
       }
     };
   }, [setupAutoRotation]);
@@ -109,15 +140,28 @@ export default function About() {
 
       <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 lg:gap-4">
         <div className="col-span-1 md:col-span-2 flex flex-col gap-6 mb-12 lg:mb-0">
-          <div className="flex justify-between items-center pb-3 w-full border-b border-stone-900">
-            <h3 className="text-lg font-semibold">Fun Facts</h3>
+          <div className="flex flex-col gap-3">
+            <div className="flex justify-between items-center w-full">
+              <h3 className="text-lg font-semibold">Fun Facts</h3>
 
-            <div className="flex">
-              <p className="text-sm mr-1 font-normal">
-                0{funFacts.indexOf(currentFunFact) + 1}
-              </p>
-              <p className="text-sm font-normal">/</p>
-              <p className="text-sm ml-1 font-normal">0{funFacts.length}</p>
+              <div className="flex">
+                <p className="text-sm mr-1 font-normal">
+                  0{funFacts.indexOf(currentFunFact) + 1}
+                </p>
+                <p className="text-sm font-normal">/</p>
+                <p className="text-sm ml-1 font-normal">0{funFacts.length}</p>
+              </div>
+            </div>
+
+            <div className="w-full h-px bg-stone-900/20 relative">
+              <motion.div
+                className="absolute left-0 origin-left w-full h-px bg-stone-900 will-change-transform"
+                style={{
+                  scaleX: progress,
+                }}
+                initial={{ scaleX: 0 }}
+                transition={{ ease: [0.16, 1, 0.3, 1] }}
+              />
             </div>
           </div>
 
@@ -137,14 +181,14 @@ export default function About() {
             </button>
             <button
               onClick={incrementFunFact}
-              className="flex items-center justify-end w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group"
+              className="flex items-center justify-end w-14 xl:w-12 h-14 xl:h-12 rounded-full bg-stone-100 overflow-hidden cursor-pointer group relative"
             >
-              <div className="flex justify-end transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:translate-x-1/2">
+              <div className="flex justify-end transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:translate-x-1/2 relative z-10">
                 <div className="flex items-center justify-center w-14 xl:w-12">
-                  <IconArrowRight className="text-stone-900 text-2xl" />
+                  <IconArrowRight className="text-stone-900 text-2xl mix-blend-difference" />
                 </div>
                 <div className="flex items-center justify-center w-14 xl:w-12">
-                  <IconArrowRight className="text-stone-900 text-2xl" />
+                  <IconArrowRight className="text-stone-900 text-2xl mix-blend-difference" />
                 </div>
               </div>
             </button>
