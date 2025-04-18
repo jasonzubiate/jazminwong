@@ -8,11 +8,7 @@ import {
   referralOptions,
 } from "@/data/contactForm";
 
-export default function ContactForm({
-  formRef,
-}: {
-  formRef: React.RefObject<HTMLElement>;
-}) {
+export default function ContactForm() {
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState<string>("");
   const [referrals, setReferrals] = useState<string[]>([]);
@@ -42,7 +38,6 @@ export default function ContactForm({
 
   return (
     <div
-      ref={formRef as React.RefObject<HTMLDivElement>}
       className="flex flex-col"
     >
       <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold mb-8">

@@ -9,12 +9,12 @@ import { cubicBezier } from "motion";
 import { IconX } from "@tabler/icons-react";
 
 export default function ContactModal() {
-  const formRef = useRef<HTMLElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const isOpen = useContactModalStore((state) => state.isOpen);
   const close = useContactModalStore((state) => state.close);
   const easeInOutQuart = cubicBezier(0.76, 0, 0.24, 1);
 
-  useOnClickOutside(isOpen, formRef as React.RefObject<HTMLElement>, close);
+  useOnClickOutside(isOpen, modalRef as React.RefObject<HTMLElement>, close);
 
   return (
     <>
@@ -30,9 +30,9 @@ export default function ContactModal() {
 
       <motion.div
         initial={{ y: 800 }}
-        animate={{ y: isOpen ? 0 : 800 }}
-        exit={{ y: 800 }}
+        animate={isOpen ? { y: 0 } : { y: 800 }}
         transition={{ duration: 1, ease: easeInOutQuart }}
+        ref={modalRef as React.RefObject<HTMLDivElement>}
         className="fixed max-h-[95dvh] p-6 lg:p-8 bg-stone-100 rounded-2xl lg:rounded-xl w-[95vw] lg:w-auto lg:h-auto lg:bottom-4 top-[2.5vh] lg:left-4 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:top-auto lg:right-4 z-998 will-change-transform overflow-y-auto"
       >
         <button
@@ -41,9 +41,9 @@ export default function ContactModal() {
         >
           <IconX className="w-5 h-5 text-stene-900" stroke={3} />
         </button>
-        
+
         <div className="h-full overflow-y-auto pb-20 lg:pb-24">
-          <ContactForm formRef={formRef as React.RefObject<HTMLElement>} />
+          <ContactForm />
         </div>
       </motion.div>
     </>
