@@ -46,12 +46,20 @@ export default function Footer() {
         <div className="flex items-end justify-between md:hidden">
           <ul className="flex flex-col gap-1 w-full">
             <li>
-              <a href="https://www.instagram.com/jazziwong_/">
+              <a
+                href="https://www.instagram.com/jazziwong_/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className="font-semibold">Instagram</p>
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/jazziwong_/">
+              <a
+                href="https://www.youtube.com/@jazziwong/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className="font-semibold">YouTube</p>
               </a>
             </li>
@@ -61,12 +69,20 @@ export default function Footer() {
 
           <ul className="flex flex-col items-end gap-1 w-full">
             <li>
-              <a href="https://www.instagram.com/jazziwong_/">
+              <a
+                href="https://www.unsplash.com/@jazziwong/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className="font-semibold">Unsplash</p>
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/jazziwong_/">
+              <a
+                href="https://www.tiktok.com/@jazziwong/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p className="font-semibold">TikTok</p>
               </a>
             </li>
