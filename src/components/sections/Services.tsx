@@ -154,7 +154,7 @@ function ServiceCard({
         </div>
 
         {/* Image for mobile (shown at bottom) */}
-        <div className="block md:hidden w-full h-[200px] sm:h-[250px] bg-stone-900 rounded-lg overflow-hidden relative mt-6 pointer-events-none">
+        <div className="block md:hidden w-full h-[250px] bg-stone-900 rounded-lg overflow-hidden relative mt-6 pointer-events-none">
           <Image
             src={imageUrl}
             alt={title}
