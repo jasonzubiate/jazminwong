@@ -3,7 +3,6 @@ import { metadata } from "@/metadata";
 import { saans } from "@/fonts";
 import DocumentTitleChanger from "@/components/layout/DocumentTitleChanger";
 import ContactModal from "@/components/modal/ContactModal";
-import FixedContactButton from "@/components/button/FixedContactButton";
 import "./globals.css";
 import { FooterProvider } from "@/contexts/footer-context";
 
@@ -25,7 +24,6 @@ export default function RootLayout({
 
             {children}
             <ContactModal />
-            <FixedContactButton />
           </body>
         </ReactLenis>
       </FooterProvider>

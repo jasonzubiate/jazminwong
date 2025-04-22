@@ -13,7 +13,7 @@ export default function PhysicsContactButtons({
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
 }) {
-  const open = useContactModalStore((state) => state.open);
+  const toggleModal = useContactModalStore((state) => state.toggleModal);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -202,7 +202,7 @@ export default function PhysicsContactButtons({
         !isDragging &&
         clickDuration < 300
       ) {
-        open();
+        toggleModal();
       }
 
       // Reset tracking variables
@@ -326,7 +326,7 @@ export default function PhysicsContactButtons({
 
       scrollTrigger.kill();
     };
-  }, [containerRef, open]);
+  }, [containerRef, toggleModal]);
 
   return <div></div>;
 }

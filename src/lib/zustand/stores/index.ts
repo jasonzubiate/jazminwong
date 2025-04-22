@@ -1,13 +1,11 @@
 import { create } from "zustand";
 
 interface ContactModalStore {
-  isOpen: boolean;
-  open: () => void;
-  close: () => void;
+  isModalOpen: boolean;
+  toggleModal: () => void;
 }
 
 export const useContactModalStore = create<ContactModalStore>((set) => ({
-  isOpen: false,
-  open: () => set({ isOpen: true }),
-  close: () => set({ isOpen: false }),
+  isModalOpen: false,
+  toggleModal: () => set((state) => ({ isModalOpen: !state.isModalOpen })),
 }));
