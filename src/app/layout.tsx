@@ -1,4 +1,5 @@
 import { ReactLenis } from "lenis/react";
+import { Analytics } from "@vercel/analytics/react";
 import { metadata } from "@/metadata";
 import { saans } from "@/fonts";
 import DocumentTitleChanger from "@/components/layout/DocumentTitleChanger";
@@ -24,6 +25,7 @@ export default function RootLayout({
 
             {children}
             <ContactModal />
+            <Analytics />
           </body>
         </ReactLenis>
       </FooterProvider>
