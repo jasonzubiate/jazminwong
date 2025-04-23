@@ -115,7 +115,7 @@ export default function Hero() {
 
         <div
           className={`overflow-hidden absolute left-4 right-4 xs:top-[80vh] sm:top-[70vh] md:top-[12.5vw] ${
-            isInstagram ? "bottom-[19vh]" : "top-[72vh]"
+            isInstagram ? "bottom-[17vh]" : "top-[72vh]"
           }`}
         >
           <div className="flex flex-col gap-0.5 md:gap-0 md:flex-row justify-between items-center relative">
