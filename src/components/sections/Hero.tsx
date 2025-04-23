@@ -110,7 +110,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <div className="overflow-hidden absolute left-4 right-4 top-[85vh] xs:top-[80vh] sm:top-[70vh] md:top-[12.5vw]">
+        <div className="overflow-hidden absolute left-4 right-4 top-[calc(80vh-10%)] xs:top-[calc(85vh-10%)] sm:top-[calc(75vh-10%)] md:top-[12.5vw]">
           <div className="flex flex-col gap-0.5 md:gap-0 md:flex-row justify-between items-center relative">
             <div className="overflow-hidden">
               <motion.p
