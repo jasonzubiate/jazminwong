@@ -6,6 +6,7 @@ import { playfair_display } from "@/fonts";
 import Slider from "@/components/layout/Slider";
 import useWindowSize from "@/hooks/useWindowSize";
 import useDisableScroll from "@/hooks/useDisableScroll";
+import useInstagramBrowser from "@/hooks/useInstagramBrowser";
 
 const sliderImages = [
   "/images/hero/image-1.jpg",
@@ -25,8 +26,10 @@ export default function Hero() {
   const { width } = useWindowSize();
   const initialScale = width < 768 ? 0.4 : 0.25;
 
+  const isInstagram = useInstagramBrowser();
+
   return (
-    <section className="pt-4  lg:pb-24 h-screen relative">
+    <section className="pt-4 lg:pb-24 h-screen relative">
       <div className="px-4">
         <h1 className="hidden">Jazmin Wong</h1>
 
@@ -110,7 +113,11 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <div className="overflow-hidden absolute left-4 right-4 top-[72vh] xs:top-[80vh] md:top-[12.5vw]">
+        <div
+          className={`overflow-hidden absolute left-4 right-4 xs:top-[80vh] sm:top-[70vh] md:top-[12.5vw] ${
+            isInstagram ? "bottom-[17vh]" : "top-[72vh]"
+          }`}
+        >
           <div className="flex flex-col gap-0.5 md:gap-0 md:flex-row justify-between items-center relative">
             <div className="overflow-hidden">
               <motion.p

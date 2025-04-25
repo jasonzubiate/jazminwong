@@ -29,7 +29,7 @@ export default function ContactModal() {
 
       <motion.div
         initial={{ y: 800 }}
-        animate={isModalOpen ? { y: 0 } : { y: 800 }}
+        animate={isModalOpen ? { y: 0 } : { y: 900 }}
         transition={{ duration: 1, ease: easeInOutQuart }}
         ref={modalRef as React.RefObject<HTMLDivElement>}
         className="fixed max-h-[95dvh] p-6 lg:p-8 bg-stone-100 rounded-2xl lg:rounded-xl w-[95vw] lg:w-auto lg:h-auto lg:bottom-4 top-[2.5vh] lg:left-4 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:top-auto lg:right-4 z-998 will-change-transform overflow-y-auto"
