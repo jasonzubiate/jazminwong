@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "jazminwong.com",
     images: [
       {
-        url: "https://www.dropbox.com/scl/fi/g08usoqmv0ara7ww4ql91/JAZMIN.png?rlkey=pc4zj5pncj0jrp4llz4gudidl&st=x06d8tnq&dl=1",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Jazmin Wong - Creative Content Strategist",
