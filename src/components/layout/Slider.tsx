@@ -113,14 +113,14 @@ export default function Slider({ images }: SliderProps) {
             }}
             className="slider-card p-3 rounded-xl bg-[#F5E1DA]"
           >
-            <div className="w-[clamp(260px,20vw,400px)] h-[clamp(320px,25vw,450px)] rounded-lg overflow-hidden relative">
+            <div className="w-[clamp(260px,20vw,400px)] h-[clamp(320px,25vw,450px)] rounded-lg overflow-hidden relative select-none">
               <Image
                 src={imageUrl}
                 alt={`Slider image ${index + 1}`}
                 width={400}
                 height={450}
                 sizes="(max-width: 640px) 260px, (max-width: 1024px) 20vw, 400px"
-                className="object-cover object-center pointer-events-none"
+                className="object-cover object-center pointer-events-none select-none"
               />
             </div>
           </motion.div>
