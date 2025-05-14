@@ -83,7 +83,7 @@ export default function PhysicsContactButtons({
       chamfer: { radius: 85 },
     });
 
-    const ctaC = Bodies.rectangle(containerWidth * 0.6, -200, 957, 170, {
+    const ctaC = Bodies.rectangle(containerWidth * 0.6, -200, 800, 170, {
       friction: 0.3,
       frictionAir: 0.00001,
       restitution: 0.3,

@@ -222,7 +222,7 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
               setErrors({ ...errors, message: false });
             }}
             placeholder="What are we creating?"
-            className={`w-full h-full resize-none p-5 rounded-xl font-normal bg-transparent focus:outline-none border ${
+            className={`w-full h-48 sm:h-full resize-none p-5 rounded-xl font-normal bg-transparent focus:outline-none border ${
               errors.message
                 ? "border-[#ff6c9f]"
                 : "border-stone-300 hover:border-stone-900"
