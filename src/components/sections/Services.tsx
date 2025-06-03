@@ -5,9 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { services } from "@/data/services";
-import { playfair_display } from "@/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
-import TextSlide from "../layout/TextSlide";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -85,14 +83,12 @@ export default function Services() {
     <section className="px-4 py-8 overflow-hidden">
       <h2
         id="services-title"
-        className="text-lg xl:text-3xl font-semibold mb-8 relative"
+        className="text-[clamp(24px,2vw,60px)] font-semibold mb-4 lg:mb-6 relative"
       >
         Services
       </h2>
 
-      {/* <TextSlide /> */}
-
-      <div className="cards flex flex-col lg:gap-2 mb-56">
+      <div className="cards flex flex-col lg:gap-2 mb-16 lg:mb-56">
         {services.map((service, index) => (
           <ServiceCard key={index} {...service} index={index} />
         ))}
@@ -118,30 +114,28 @@ function ServiceCard({
 }: ServiceCardProps) {
   return (
     <div className="card relative pb-4" id={`card-${index}`}>
-      <div className="card-inner relative will-change-transform w-full h-full p-4 sm:p-6 md:p-8 rounded-xl">
-        <div className="flex justify-between mb-12">
-          <h3 className="text-[clamp(56px,7vw,128px)] font-semibold tracking-tight leading-none">
+      <div className="card-inner relative will-change-transform w-full h-full p-6 lg:p-8 rounded-xl lg:rounded-2xl">
+        <div className="flex flex-row justify-between mb-8 lg:mb-12">
+          <h3 className="text-[clamp(48px,7vw,128px)] font-semibold tracking-tight leading-none">
             {title}
           </h3>
 
-          <p className="text-[clamp(56px,7vw,128px)] font-semibold leading-none">
+          <p className="text-lg lg:text-[clamp(48px,7vw,128px)] mt-2 lg:mt-0 font-semibold tracking-wider lg:tracking-normal leading-none">
             (0{index + 1})
           </p>
         </div>
 
-        <div className="flex items-start justify-between w-full">
-          <div className="flex flex-col gap-8 w-6/12">
-            <p
-              className={`text-[clamp(14px,2vw,28px)] font-semibold leading-tight `}
-            >
+        <div className="flex flex-col-reverse lg:flex-row items-start justify-between w-full">
+          <div className="flex flex-col gap-6 lg:gap-8 w-full lg:w-6/12">
+            <p className="text-[clamp(18px,2vw,28px)] font-semibold leading-tight">
               {description}
             </p>
 
-            <ul className="flex flex-wrap gap-2 w-10/12">
+            <ul className="flex flex-wrap gap-2 w-full lg:w-10/12">
               {keywords.map((keyword, index) => (
                 <li
                   key={index}
-                  className="text-[clamp(12px,1.2vw,24px)] px-4 py-1.5 rounded-full bg-stone-50/70 font-semibold"
+                  className="text-[clamp(14px,1.2vw,24px)] px-4 py-1.5 rounded-full bg-stone-50/70 font-semibold"
                 >
                   {keyword}
                 </li>
@@ -149,7 +143,7 @@ function ServiceCard({
             </ul>
           </div>
 
-          <div className="relative w-5/12 h-[350px] rounded-lg overflow-hidden">
+          <div className="relative w-full lg:w-5/12 h-[250px] lg:h-[350px] rounded-lg overflow-hidden mb-4 lg:mb-0">
             <Image
               src={imageUrl}
               alt={title}
@@ -158,43 +152,7 @@ function ServiceCard({
             />
           </div>
         </div>
-        {/* <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-16 max-w-full md:max-w-[90%]">
-             
-
-              <div className="flex flex-col w-full sm:w-2/5 mt-4 sm:mt-0">
-                {keywords.map((keyword, index) => (
-                  <p
-                    key={index}
-                    className="lg:text-[clamp(11px,0.9vw,16px)] font-normal -mb-0.5"
-                  >
-                    {keyword}
-                  </p>
-                ))}
-              </div>
-            </div> */}
       </div>
-
-      {/* Image for tablet/desktop (shown on right) */}
-      {/* <div className="hidden md:block md:col-span-4 h-full w-full bg-stone-900 rounded-lg overflow-hidden relative pointer-events-none">
-            <Image
-              src={imageUrl}
-              alt={title}
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover object-center pointer-events-none"
-            />
-          </div> */}
-
-      {/* Image for mobile (shown at bottom) */}
-      {/* <div className="block md:hidden w-full h-[250px] bg-stone-900 rounded-lg overflow-hidden relative mt-6 pointer-events-none">
-          <Image
-            src={imageUrl}
-            alt={title}
-            fill
-            sizes="100vw"
-            className="object-cover object-center pointer-events-none"
-          />
-        </div> */}
     </div>
   );
 }

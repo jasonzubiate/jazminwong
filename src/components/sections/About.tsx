@@ -4,12 +4,10 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import NumberFlow from "@number-flow/react";
 import { funFacts } from "@/data/funFacts";
-import { playfair_display } from "@/fonts";
 import Copy from "@/components/layout/Copy";
 
 export default function About() {
   const [currentFunFact, setCurrentFunFact] = useState(funFacts[0]);
-  const [progress, setProgress] = useState(0);
 
   const incrementFunFact = () => {
     setCurrentFunFact((prev) => {
@@ -17,14 +15,6 @@ export default function About() {
       return funFacts[(currentIndex + 1) % funFacts.length];
     });
     setupAutoRotation(); // Reset the timeout after manual increment
-  };
-
-  const decrementFunFact = () => {
-    setCurrentFunFact((prev) => {
-      const currentIndex = funFacts.indexOf(prev);
-      return funFacts[(currentIndex - 1 + funFacts.length) % funFacts.length];
-    });
-    setupAutoRotation(); // Reset the timeout after manual decrement
   };
 
   // Add a ref to store the timeout ID
@@ -44,24 +34,7 @@ export default function About() {
       cancelAnimationFrame(animationRef.current);
     }
 
-    // Reset progress
-    setProgress(0);
     startTimeRef.current = Date.now();
-
-    // Set up animation frame for progress
-    const animateProgress = () => {
-      if (!startTimeRef.current) return;
-
-      const elapsed = Date.now() - startTimeRef.current;
-      const newProgress = Math.min(elapsed / 5000, 1);
-      setProgress(newProgress);
-
-      if (newProgress < 1) {
-        animationRef.current = requestAnimationFrame(animateProgress);
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animateProgress);
 
     // Set a new timeout
     timeoutRef.current = setTimeout(() => {
@@ -86,17 +59,15 @@ export default function About() {
 
   return (
     <section id="about" className="px-4 pb-20 lg:py-24">
-      <p className="text-sm font-semibold lg:hidden">(About Jazzi)</p>
-
-      <div className="mb-16">
+      <div className="mb-12 lg:mb-16">
         <Copy>
-          <p className="text-[clamp(12px,1.1vw,28px)] font-semibold mb-2">
+          <p className="text-[clamp(16px,1.2vw,28px)] font-semibold mb-2">
             (About Jazmin)
           </p>
         </Copy>
 
         <Copy>
-          <p className="text-[clamp(20px,4.5vw,60px)] font-semibold tracking-tight leading-[1.1]">
+          <p className="text-[clamp(24px,5vw,60px)] font-semibold tracking-tight leading-[1.1]">
             I&apos;m a passionate marketing enthusiast driven by creativity and
             curiosity. While I&apos;m early in my professional journey, my love
             for marketing runs deep—from digital advertising to content
@@ -107,7 +78,7 @@ export default function About() {
       </div>
 
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 md:col-span-6 h-[500px] p-3 bg-[#F0CCDF] rounded-2xl">
+        <div className="col-span-12 md:col-span-6 h-[clamp(350px,50vw,500px)] p-3 bg-[#F0CCDF] rounded-2xl">
           <div className="w-full h-full rounded-lg overflow-hidden relative">
             <Image
               src={currentFunFact.imageUrl}
@@ -118,14 +89,14 @@ export default function About() {
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-6 flex flex-col justify-between p-12 bg-[#F0CCDF] rounded-2xl overflow-hidden relative">
+        <div className="col-span-12 md:col-span-6 h-[350px] lg:h-full flex flex-col justify-between p-8 lg:p-12 bg-[#F0CCDF] rounded-2xl overflow-hidden relative">
           <Copy>
-            <p className="text-[clamp(12px,2vw,32px)] text-[#C56386] font-semibold leading-tight">
+            <p className="text-[clamp(20px,2vw,32px)] text-[#C56386] font-semibold leading-tight">
               {currentFunFact.description}
             </p>
           </Copy>
           <NumberFlow
-            className="text-[clamp(120px,15vw,300px)] text-[#C56386] font-bold tracking-tight absolute -bottom-[2vw] left-12"
+            className="text-[clamp(150px,15vw,300px)] text-[#C56386] font-bold tracking-tight absolute -bottom-[3vw] lg:-bottom-[2vw] left-8 lg:left-12"
             value={currentFunFact.numbericalValue}
           />
         </div>

@@ -51,7 +51,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold">Instagram</p>
+                <p className="font-semibold text-[#C56386]">Instagram</p>
               </a>
             </li>
             <li>
@@ -60,12 +60,12 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold">YouTube</p>
+                <p className="font-semibold text-[#C56386]">YouTube</p>
               </a>
             </li>
           </ul>
 
-          <p className="font-semibold w-full text-center">©2025</p>
+          <p className="font-semibold text-[#C56386] w-full text-center">©2025</p>
 
           <ul className="flex flex-col items-end gap-1 w-full">
             <li>
@@ -74,7 +74,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold">Unsplash</p>
+                <p className="font-semibold text-[#C56386]">Unsplash</p>
               </a>
             </li>
             <li>
@@ -83,7 +83,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold">TikTok</p>
+                <p className="font-semibold text-[#C56386]">TikTok</p>
               </a>
             </li>
           </ul>
