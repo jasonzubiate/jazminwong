@@ -37,7 +37,7 @@ export default function DesktopSocials() {
   return (
     <ul className="hidden md:flex md:justify-between w-full">
       <li>
-        <p className="font-semibold text-[clamp(16px,1.6vw,24px)] py-2">
+        <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] py-2">
           ©2025
         </p>
       </li>
@@ -59,7 +59,7 @@ export default function DesktopSocials() {
                 index === socialLinks.length - 1
                   ? "right-0"
                   : " left-1/2 -translate-x-1/2"
-              } absolute -top-48 w-[300px] h-[180px] p-2 rounded-lg bg-stone-500/10 backdrop-blur-md opacity-0 translate-y-4 scale-95 pointer-events-none group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 z-10`}
+              } absolute -top-48 w-[300px] h-[180px] p-2 rounded-lg bg-[#F0CCDF]/25 backdrop-blur-md opacity-0 translate-y-4 scale-95 pointer-events-none group-hover:scale-100 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 z-10`}
             >
               <video
                 ref={(el) => {
@@ -83,13 +83,13 @@ export default function DesktopSocials() {
             <div
               className={`${
                 index === socialLinks.length - 1 ? "pl-6" : "px-6"
-              }  overflow-hidden h-10 py-2`}
+              }  overflow-hidden h-10 py-2 `}
             >
               <div className="flex flex-col transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:-translate-y-1/2">
-                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] mb-1.5">
+                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] mb-1.5">
                   {social.title}
                 </span>
-                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] mb-1.5">
+                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] mb-1.5">
                   {social.title}
                 </span>
               </div>

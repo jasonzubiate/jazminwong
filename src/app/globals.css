@@ -25,19 +25,19 @@
 }
 
 #card-0 .card-inner {
-  @apply bg-[#FFDBE8];
+  @apply bg-[#ffbed6] text-[#4B0018];
 }
 
 #card-1 .card-inner {
-  @apply bg-[#BADD7F];
+  @apply bg-[#FFE5B4] text-[#805300];
 }
 
 #card-2 .card-inner {
-  @apply bg-[#FFEBAE];
+  @apply bg-[#D4E8D4] text-[#2D5A2D];
 }
 
 #card-3 .card-inner {
-  @apply bg-[#A7B5FE];
+  @apply bg-[#E2D1F9] text-[#3A1B6B];
 }
 
 @keyframes blink {

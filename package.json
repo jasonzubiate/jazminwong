@@ -14,6 +14,7 @@
     "@tabler/icons-react": "^3.31.0",
     "@types/nodemailer": "^6.4.17",
     "@vercel/analytics": "^1.5.0",
+    "gsap": "^3.13.0",
     "lenis": "^1.2.3",
     "matter-js": "^0.20.0",
     "motion": "^12.6.3",

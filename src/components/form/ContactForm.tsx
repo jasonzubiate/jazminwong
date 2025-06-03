@@ -1,12 +1,7 @@
 "use client";
 
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
-import { playfair_display } from "@/fonts";
-import {
-  serviceOptions,
-  budgetOptions,
-  referralOptions,
-} from "@/data/contactForm";
+import { serviceOptions, budgetOptions } from "@/data/contactForm";
 import { useContactModalStore } from "@/lib/zustand/stores";
 export interface ContactFormRef {
   submit: () => void;
@@ -22,14 +17,13 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
   });
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState<string>("");
-  const [referrals, setReferrals] = useState<string[]>([]);
   const [errors, setErrors] = useState({
     name: false,
     email: false,
+    company: false,
     message: false,
     services: false,
     budget: false,
-    referrals: false,
   });
   const toggleModal = useContactModalStore((state) => state.toggleModal);
 
@@ -57,15 +51,6 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
     setErrors({ ...errors, budget: false });
   };
 
-  // Handle referral selection (multiselect)
-  const toggleReferral = (referral: string) => {
-    if (referrals.includes(referral)) {
-      setReferrals(referrals.filter((item) => item !== referral));
-    } else {
-      setReferrals([...referrals, referral]);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -73,6 +58,7 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
     const newErrors = {
       name: false,
       email: false,
+      company: false,
       message: false,
       services: false,
       budget: false,
@@ -85,6 +71,9 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
     }
     if (clientData.email.trim() === "") {
       newErrors.email = true;
+    }
+    if (clientData.company.trim() === "") {
+      newErrors.company = true;
     }
     if (clientData.message.trim() === "") {
       newErrors.message = true;
@@ -108,7 +97,6 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
     console.log(clientData);
     console.log(services);
     console.log(budget);
-    console.log(referrals);
 
     // Send email
     const response = await fetch("/api/contact", {
@@ -123,7 +111,6 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
         message: clientData.message,
         services,
         budget,
-        referrals,
       }),
     });
 
@@ -137,14 +124,13 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
       });
       setServices([]);
       setBudget("");
-      setReferrals([]);
       setErrors({
         name: false,
         email: false,
+        company: false,
         message: false,
         services: false,
         budget: false,
-        referrals: false,
       });
       toggleModal();
     } else {
@@ -153,24 +139,40 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
   };
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold mb-8">
-        Get in touch
+    <div className="flex flex-col h-full">
+      {/* <div className="flex flex-col"> */}
+      <h2 className="text-5xl lg:text-8xl font-semibold tracking-tight mb-8 leading-[0.8]">
+        <span className="text-[#C56386]">Get in</span>{" "}
+        <span className="text-[#5D001D]">touch</span>
       </h2>
+
+      {/* <div className="w-full flex justify-between">
+          <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386]">
+            Always interested in hearing about new projects and collaborations.
+            Please reach out to me with your project details if interested in
+            collaborating.
+          </p>
+        </div> */}
+      {/* </div> */}
 
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="flex flex-col lg:flex-row gap-12 lg:gap-8"
+        className="flex flex-col gap-3 h-full"
       >
-        <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-1/2">
-          <p
-            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+        <div className="flex flex-col lg:flex-row gap-3 w-full">
+          {/* Full name */}
+          <div
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.name ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
           >
-            Your information
-          </p>
-
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-3">
+            <label
+              htmlFor="name"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+            >
+              Full name
+            </label>
             <input
               type="text"
               name="name"
@@ -179,13 +181,23 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setClientData({ ...clientData, name: e.target.value });
                 setErrors({ ...errors, name: false });
               }}
-              placeholder="Full name"
-              className={`w-full py-3 px-5 rounded-full font-normal bg-transparent focus:outline-none border ${
-                errors.name
-                  ? "border-[#ff6c9f]"
-                  : "border-stone-300 hover:border-stone-900"
-              } focus:border-stone-900 placeholder:text-stone-400 transition-colors duration-300 ease-in-out`}
+              placeholder="Fiona Wong"
+              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
             />
+          </div>
+
+          {/* Email */}
+          <div
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.email ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
+          >
+            <label
+              htmlFor="email"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+            >
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -194,114 +206,120 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setClientData({ ...clientData, email: e.target.value });
                 setErrors({ ...errors, email: false });
               }}
-              placeholder="Email"
-              className={`w-full py-3 px-5 rounded-full font-normal bg-transparent focus:outline-none border ${
-                errors.email
-                  ? "border-[#ff6c9f]"
-                  : "border-stone-300 hover:border-stone-900"
-              } focus:border-stone-900 placeholder:text-stone-400 transition-colors duration-300 ease-in-out`}
+              placeholder="fionawong@gmail.com"
+              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
             />
           </div>
 
-          <input
-            type="text"
-            name="company"
-            value={clientData.company}
-            onChange={(e) =>
-              setClientData({ ...clientData, company: e.target.value })
-            }
-            placeholder="Company name (optional)"
-            className="w-full py-3 px-5 rounded-full font-normal bg-transparent focus:outline-none border border-stone-300 focus:border-stone-900 hover:border-stone-900 placeholder:text-stone-400 transition-colors duration-200 ease-in-out"
-          />
-
-          <textarea
-            name="message"
-            value={clientData.message}
-            onChange={(e) => {
-              setClientData({ ...clientData, message: e.target.value });
-              setErrors({ ...errors, message: false });
-            }}
-            placeholder="What are we creating?"
-            className={`w-full h-full resize-none p-5 rounded-xl font-normal bg-transparent focus:outline-none border ${
-              errors.message
-                ? "border-[#ff6c9f]"
-                : "border-stone-300 hover:border-stone-900"
-            } focus:border-stone-900 placeholder:text-stone-400 transition-colors duration-200 ease-in-out`}
-          />
+          {/* Company */}
+          <div
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.company ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
+          >
+            <label
+              htmlFor="company"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+            >
+              Company
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={clientData.company}
+              onChange={(e) => {
+                setClientData({ ...clientData, email: e.target.value });
+                setErrors({ ...errors, email: false });
+              }}
+              placeholder="Fifi Vintage"
+              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
+            />
+          </div>
         </div>
 
-        <div className="flex flex-col gap-4 w-full lg:w-1/2">
-          <p
-            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+        <div className="flex flex-col lg:flex-row gap-3 w-full h-full">
+          {/* Message */}
+          <div
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-4 h-72 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.message ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
           >
-            What can I do for you?
-          </p>
+            <label
+              htmlFor="message"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+            >
+              Project details
+            </label>
+            <textarea
+              name="message"
+              value={clientData.message}
+              onChange={(e) => {
+                setClientData({ ...clientData, message: e.target.value });
+                setErrors({ ...errors, message: false });
+              }}
+              placeholder="Tell me you goals"
+              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl leading-tight focus:outline-none h-full resize-none"
+            ></textarea>
+          </div>
 
-          <div className="flex flex-wrap gap-2 lg:gap-3">
-            {serviceOptions.map((service) => (
-              <div
-                key={service}
-                onClick={() => toggleService(service)}
-                className={`px-5 py-3 font-normal rounded-full border cursor-pointer transition-colors duration-300 ease-in-out
+          {/* Services */}
+          <div
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.services ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
+          >
+            <label
+              htmlFor="services"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+            >
+              What can I do for you?
+            </label>
+            <ul className="flex flex-wrap gap-2 w-full">
+              {serviceOptions.map((service) => (
+                <li
+                  key={service}
+                  onClick={() => toggleService(service)}
+                  className={`px-3.5 py-1.5 font-semibold rounded-full border-2 border-[#C56386] cursor-pointer transition-colors duration-300 ease-in-out
                     ${
                       services.includes(service)
-                        ? "text-stone-100 bg-stone-900 border-stone-900"
-                        : errors.services
-                        ? "border-[#ff6c9f]"
-                        : "border-stone-300 hover:border-stone-900"
+                        ? "text-[#F0CCDF] bg-[#C56386]"
+                        : "text-[#C56386]"
                     }`}
-              >
-                {service}
-              </div>
-            ))}
+                >
+                  {service}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <p
-            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
+          {/* Budget */}
+          <div
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 h-96 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
+              ${errors.budget ? "border-[#d40101]" : "border-[#C56386]/0"}
+              `}
           >
-            Do you have a budget range?
-          </p>
-
-          <div className="flex flex-wrap gap-2 lg:gap-3">
-            {budgetOptions.map((option) => (
-              <div
-                key={option}
-                onClick={() => selectBudget(option)}
-                className={`px-5 py-3 font-normal rounded-full border cursor-pointer transition-colors duration-300 ease-in-out
+            <label
+              htmlFor="budget"
+              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+            >
+              Do you have a budget range?
+            </label>
+            <ul className="flex flex-wrap gap-2 w-full">
+              {budgetOptions.map((option) => (
+                <li
+                  key={option}
+                  onClick={() => selectBudget(option)}
+                  className={`px-3.5 py-1.5 font-semibold rounded-full border-2 border-[#C56386] cursor-pointer transition-colors duration-300 ease-in-out
                     ${
                       budget === option
-                        ? "text-stone-100 bg-stone-900 border-stone-900"
-                        : errors.budget
-                        ? "border-[#ff6c9f]"
-                        : "border-stone-300 hover:border-stone-900"
+                        ? "text-[#F0CCDF] bg-[#C56386]"
+                        : "text-[#C56386]"
                     }`}
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-
-          <p
-            className={`${playfair_display.className} mb-1 lg:mb-0 text-2xl font-normal`}
-          >
-            How did you hear about me?
-          </p>
-
-          <div className="flex flex-wrap gap-2 lg:gap-3">
-            {referralOptions.map((referral) => (
-              <div
-                key={referral}
-                onClick={() => toggleReferral(referral)}
-                className={`px-5 py-3 font-normal rounded-full border cursor-pointer transition-colors duration-300 ease-in-out
-                    ${
-                      referrals.includes(referral)
-                        ? "text-stone-100 bg-stone-900 border-stone-900"
-                        : "border-stone-300 hover:border-stone-900"
-                    }`}
-              >
-                {referral}
-              </div>
-            ))}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </form>

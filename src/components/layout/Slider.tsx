@@ -111,7 +111,7 @@ export default function Slider({ images }: SliderProps) {
               delay: width < 768 ? 2 : 2.4,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="slider-card p-3 rounded-xl bg-[#F5E1DA]"
+            className="slider-card p-3 rounded-xl bg-[#DDA7C4]"
           >
             <div className="w-[clamp(260px,20vw,400px)] h-[clamp(320px,25vw,450px)] rounded-lg overflow-hidden relative select-none">
               <Image

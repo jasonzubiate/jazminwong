@@ -32,16 +32,16 @@ export default function ContactModal() {
         animate={isModalOpen ? { y: 0 } : { y: 900 }}
         transition={{ duration: 1, ease: easeInOutQuart }}
         ref={modalRef as React.RefObject<HTMLDivElement>}
-        className="fixed max-h-[95dvh] p-6 lg:p-8 bg-stone-100 rounded-2xl lg:rounded-xl w-[95vw] lg:w-auto lg:h-auto lg:bottom-4 top-[2.5vh] lg:left-4 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:top-auto lg:right-4 z-998 will-change-transform overflow-y-auto"
+        className="fixed top-4 bottom-4 left-4 right-4 px-6 py-10 pb-24 lg:p-12 bg-stone-100 rounded-2xl lg:rounded-3xl z-998 will-change-transform overflow-y-auto"
       >
         <button
           onClick={toggleModal}
-          className="fixed top-6 right-6 w-10 lg:w-12 h-10 lg:h-12 rounded-full flex items-center justify-center bg-[#FBC1D5] z-999 cursor-pointer hover:scale-110 transition-all duration-150 ease-[cubic-bezier(0.64,0.57,0.67,1.53)]"
+          className="fixed top-10 right-6 lg:top-8 lg:right-8 w-10 lg:w-12 h-10 lg:h-12 rounded-full flex items-center justify-center bg-[#C56386] z-999 cursor-pointer hover:scale-110 transition-all duration-150 ease-[cubic-bezier(0.64,0.57,0.67,1.53)]"
         >
-          <IconX className="w-5 h-5 lg:w-6 lg:h-6 text-stene-900" stroke={3} />
+          <IconX className="w-5 h-5 lg:w-6 lg:h-6 text-[#F0CCDF]" stroke={3} />
         </button>
 
-        <div className="h-full overflow-y-auto pb-20 lg:pb-24">
+        <div className="h-full overflow-y-auto pb-20">
           <ContactForm ref={formRef} />
         </div>
       </motion.div>

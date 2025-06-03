@@ -18,6 +18,11 @@ export const saans = localFont({
       weight: "600",
       style: "normal",
     },
+    {
+      path: "./Saans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
   ],
   variable: "--font-saans",
 });

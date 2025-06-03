@@ -27,8 +27,8 @@ export const services: Service[] = [
     keywords: [
       "High-Quality Images",
       "Brand Storytelling",
-      "Emotional Connection",
       "Visual Appeal",
+      "Emotional Connection",
       "Professional Photography",
       "Creative Direction",
     ],

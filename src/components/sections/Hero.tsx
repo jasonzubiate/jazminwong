@@ -146,7 +146,7 @@ export default function Hero() {
                 className="w-[clamp(28px,2vw,48px)] h-[clamp(28px,2vw,48px)] relative group"
               >
                 <Image
-                  src="/images/icons/star.png"
+                  src="/images/icons/star.svg"
                   alt="star"
                   fill
                   sizes="(max-width: 768px) 28px, 48px"
