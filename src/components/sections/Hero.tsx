@@ -47,7 +47,6 @@ export default function Hero() {
           transition={{
             duration: 1.6,
             ease: [0.22, 1, 0.36, 1],
-
             scale: {
               duration: 1,
               delay: 0.8,
