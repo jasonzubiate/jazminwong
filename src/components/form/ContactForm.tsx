@@ -219,8 +219,8 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
               name="company"
               value={clientData.company}
               onChange={(e) => {
-                setClientData({ ...clientData, email: e.target.value });
-                setErrors({ ...errors, email: false });
+                setClientData({ ...clientData, company: e.target.value });
+                setErrors({ ...errors, company: false });
               }}
               placeholder="Fifi Vintage"
               className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] focus:outline-none"
