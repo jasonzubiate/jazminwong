@@ -30,7 +30,7 @@ export default function Footer() {
         <div ref={matterContainer} className="h-full relative overflow-hidden">
           <h2 className="text-[clamp(50px,6vw,72px)] font-semibold text-center tracking-tight leading-[0.85] top-12 lg:top-0 left-1/2 -translate-x-1/2 absolute w-full text-[#C43670]">
             Let&apos;s work{" "}
-            <span className="text-[#5d001d] z-50">together!</span>
+            <span className="text-[#5D001D] z-50">together!</span>
           </h2>
 
           {width > 768 && (

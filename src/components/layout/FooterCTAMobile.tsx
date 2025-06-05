@@ -10,7 +10,7 @@ export default function FooterCTAMobile() {
         href="mailto:jazminnwong@gmail.com"
         className="flex flex-col items-start pt-6 pb-4 px-4 rounded-lg w-full max-w-[600px] bg-[#F0CCDF] cursor-pointer"
       >
-        <p className="text-[#C56386] tracking-tight">Email me</p>
+        <p className="text-[#C43670] tracking-tight">Email me</p>
 
         <p className="text-xl text-stone-100 leading-tight font-semibold">
           jazminnwong@gmail.com
@@ -21,7 +21,7 @@ export default function FooterCTAMobile() {
         onClick={toggleModal}
         className="p-4 rounded-full w-full max-w-[600px] bg-[#F0CCDF] cursor-pointer"
       >
-        <p className="text-2xl tracking-tight font-semibold text-[#C56386]">
+        <p className="text-2xl tracking-tight font-semibold text-[#C43670]">
           Send me a message
         </p>
       </button>
