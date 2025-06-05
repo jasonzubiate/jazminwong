@@ -56,7 +56,7 @@ export default function FixedContactButton({
       onClick={handleClick}
       ref={buttonRef}
       className={`${
-        isModalOpen ? "bg-[#C56386]" : "bg-[#F0CCDF]"
+        isModalOpen ? "bg-[#C43670]" : "bg-[#F0CCDF]"
       } flex items-center gap-2 xl:gap-3 fixed bottom-8 left-1/2 -translate-x-1/2 pl-1 py-1 pr-4 xl:pr-6 rounded-full shadow-2xl cursor-pointer group z-999 transition-colors duration-700 delay-100 ease-in-out`}
     >
       <div className="h-12 xl:h-16 w-12 xl:w-16 relative rounded-full">
@@ -79,7 +79,7 @@ export default function FixedContactButton({
           } flex items-center justify-center h-12 xl:h-16 w-12 xl:w-16 bg-stone-100 rounded-full scale-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-100 transition-all duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)]`}
         >
           <IconMail
-            className="text-[#C56386]"
+            className="text-[#C43670]"
             stroke={2.5}
             size={width < 728 ? 20 : 30}
           />
@@ -93,14 +93,14 @@ export default function FixedContactButton({
           <div className="flex transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:translate-x-1/2">
             <div className="flex items-center justify-center w-12 xl:w-16">
               <IconSend2
-                className="text-[#C56386] text-2xl xl:text-5xl"
+                className="text-[#C43670] text-2xl xl:text-5xl"
                 stroke={2.5}
                 size={width < 728 ? 20 : 30}
               />
             </div>
             <div className="flex items-center justify-center w-12 xl:w-16">
               <IconSend2
-                className="text-[#C56386] text-2xl xl:text-5xl"
+                className="text-[#C43670] text-2xl xl:text-5xl"
                 stroke={2.5}
                 size={width < 728 ? 20 : 30}
               />
@@ -111,7 +111,7 @@ export default function FixedContactButton({
 
       <div
         className={`${
-          isModalOpen ? "text-[#F0CCDF]" : "text-[#C56386]"
+          isModalOpen ? "text-[#F0CCDF]" : "text-[#C43670]"
         } overflow-hidden h-7 lg:h-9`}
       >
         <div className="flex flex-col transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:-translate-y-1/2">

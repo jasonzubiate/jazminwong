@@ -59,7 +59,7 @@ export default function About() {
 
   return (
     <section id="about" className="px-4 pb-20 lg:py-24">
-      <div className="mb-12 lg:mb-16">
+      <div className="mb-12 lg:mb-[clamp(64px,5vw,128px)]">
         <Copy>
           <p className="text-[clamp(16px,1.2vw,28px)] font-semibold mb-2">
             (About Jazmin)
@@ -67,7 +67,7 @@ export default function About() {
         </Copy>
 
         <Copy>
-          <p className="text-[clamp(24px,5vw,60px)] font-semibold tracking-tight leading-[1.1]">
+          <p className="text-[clamp(24px,4vw,96px)] font-semibold tracking-tight leading-[1.1]">
             I&apos;m a passionate marketing enthusiast driven by creativity and
             curiosity. While I&apos;m early in my professional journey, my love
             for marketing runs deep—from digital advertising to content
@@ -78,7 +78,7 @@ export default function About() {
       </div>
 
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 md:col-span-6 h-[clamp(350px,50vw,500px)] p-3 bg-[#F0CCDF] rounded-2xl">
+        <div className="col-span-12 md:col-span-6 h-[clamp(350px,40vw,900px)] p-3 bg-[#F0CCDF] rounded-2xl">
           <div className="w-full h-full rounded-lg overflow-hidden relative">
             <Image
               src={currentFunFact.imageUrl}
@@ -89,14 +89,14 @@ export default function About() {
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-6 h-[350px] lg:h-full flex flex-col justify-between p-8 lg:p-12 bg-[#F0CCDF] rounded-2xl overflow-hidden relative">
+        <div className="col-span-12 md:col-span-6 h-[350px] lg:h-[clamp(350px,40vw,900px)] flex flex-col justify-between p-8 lg:p-12 bg-[#F0CCDF] rounded-2xl overflow-hidden relative">
           <Copy>
-            <p className="text-[clamp(20px,2vw,32px)] text-[#C56386] font-semibold leading-tight">
+            <p className="text-[clamp(20px,2vw,48px)] text-[#C43670] font-semibold leading-tight">
               {currentFunFact.description}
             </p>
           </Copy>
           <NumberFlow
-            className="text-[clamp(150px,15vw,300px)] text-[#C56386] font-bold tracking-tight absolute -bottom-[3vw] lg:-bottom-[2vw] left-8 lg:left-12"
+            className="text-[clamp(150px,15vw,350px)] text-[#C43670] font-bold tracking-tight absolute -bottom-[3vw] lg:-bottom-[2vw] left-8 lg:left-12"
             value={currentFunFact.numbericalValue}
           />
         </div>

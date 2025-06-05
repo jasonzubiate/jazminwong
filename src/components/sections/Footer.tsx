@@ -20,7 +20,7 @@ export default function Footer() {
         className="flex flex-col justify-between gap-8 p-4 md:px-8 pt-8 pb-6 rounded-xl bg-stone-100 h-[600px] lg:h-[clamp(700px,95vh,900px)]"
       >
         <div className="flex justify-between w-full">
-          <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386]">
+          <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C43670]">
             Los Angeles, CA
           </p>
 
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
 
         <div ref={matterContainer} className="h-full relative overflow-hidden">
-          <h2 className="text-[clamp(50px,6vw,72px)] font-semibold text-center tracking-tight leading-[0.85] top-12 lg:top-0 left-1/2 -translate-x-1/2 absolute w-full text-[#C56386]">
+          <h2 className="text-[clamp(50px,6vw,72px)] font-semibold text-center tracking-tight leading-[0.85] top-12 lg:top-0 left-1/2 -translate-x-1/2 absolute w-full text-[#C43670]">
             Let&apos;s work{" "}
             <span className="text-[#5d001d] z-50">together!</span>
           </h2>
@@ -51,7 +51,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold text-[#C56386]">Instagram</p>
+                <p className="font-semibold text-[#C43670]">Instagram</p>
               </a>
             </li>
             <li>
@@ -60,12 +60,12 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold text-[#C56386]">YouTube</p>
+                <p className="font-semibold text-[#C43670]">YouTube</p>
               </a>
             </li>
           </ul>
 
-          <p className="font-semibold text-[#C56386] w-full text-center">©2025</p>
+          <p className="font-semibold text-[#C43670] w-full text-center">©2025</p>
 
           <ul className="flex flex-col items-end gap-1 w-full">
             <li>
@@ -74,7 +74,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold text-[#C56386]">Unsplash</p>
+                <p className="font-semibold text-[#C43670]">Unsplash</p>
               </a>
             </li>
             <li>
@@ -83,7 +83,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <p className="font-semibold text-[#C56386]">TikTok</p>
+                <p className="font-semibold text-[#C43670]">TikTok</p>
               </a>
             </li>
           </ul>
