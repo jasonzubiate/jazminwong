@@ -248,7 +248,7 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setClientData({ ...clientData, message: e.target.value });
                 setErrors({ ...errors, message: false });
               }}
-              placeholder="Tell me you goals"
+              placeholder="Tell me your goals"
               className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] leading-tight focus:outline-none h-full resize-none"
             ></textarea>
           </div>
