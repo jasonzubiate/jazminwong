@@ -24,7 +24,7 @@ const work = [
   },
   {
     title: "Inc Coffee Roasters",
-    tags: ["UGC", "Photography", "Short-Form Video", "Content Strategy"],
+    tags: ["Social Media Management", "Photography", "Short-Form Video", "Content Strategy"],
     href: "https://www.inccoffeeroasters.com/",
     instagram: "https://www.instagram.com/inccoffeeroasters/",
     coverImage: "/images/work/work-3.png",
