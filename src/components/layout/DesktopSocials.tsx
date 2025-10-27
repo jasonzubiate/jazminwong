@@ -37,7 +37,7 @@ export default function DesktopSocials() {
   return (
     <ul className="hidden md:flex md:justify-between w-full">
       <li>
-        <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] py-2">
+        <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C43670] py-2">
           ©2025
         </p>
       </li>
@@ -86,10 +86,10 @@ export default function DesktopSocials() {
               }  overflow-hidden h-10 py-2 `}
             >
               <div className="flex flex-col transition-transform duration-200 ease-[cubic-bezier(0.64,0.57,0.67,1.53)] group-hover:-translate-y-1/2">
-                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] mb-1.5">
+                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C43670] mb-1.5">
                   {social.title}
                 </span>
-                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386] mb-1.5">
+                <span className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C43670] mb-1.5">
                   {social.title}
                 </span>
               </div>

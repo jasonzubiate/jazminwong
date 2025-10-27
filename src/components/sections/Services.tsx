@@ -116,22 +116,22 @@ function ServiceCard({
     <div className="card relative pb-4" id={`card-${index}`}>
       <div className="card-inner relative will-change-transform w-full h-full p-6 lg:p-8 rounded-xl lg:rounded-2xl">
         <div className="flex flex-row justify-between mb-8 lg:mb-12">
-          <h3 className="text-[clamp(48px,7vw,128px)] font-semibold tracking-tight leading-none">
+          <h3 className="text-[clamp(48px,7vw,144px)] font-semibold tracking-tight leading-none">
             {title}
           </h3>
 
-          <p className="text-lg lg:text-[clamp(48px,7vw,128px)] mt-2 lg:mt-0 font-semibold tracking-wider lg:tracking-normal leading-none">
+          <p className="text-lg lg:text-[clamp(48px,7vw,144px)] mt-2 lg:mt-0 font-semibold tracking-wider lg:tracking-normal leading-none">
             (0{index + 1})
           </p>
         </div>
 
         <div className="flex flex-col-reverse lg:flex-row items-start justify-between w-full">
           <div className="flex flex-col gap-6 lg:gap-8 w-full lg:w-6/12">
-            <p className="text-[clamp(18px,2vw,28px)] font-semibold leading-tight">
+            <p className="text-[clamp(18px,2vw,40px)] font-semibold leading-tight">
               {description}
             </p>
 
-            <ul className="flex flex-wrap gap-2 w-full lg:w-10/12">
+            <ul className="flex flex-wrap gap-2 2xl:gap-3 w-full lg:w-10/12">
               {keywords.map((keyword, index) => (
                 <li
                   key={index}
@@ -143,7 +143,7 @@ function ServiceCard({
             </ul>
           </div>
 
-          <div className="relative w-full lg:w-5/12 h-[250px] lg:h-[350px] rounded-lg overflow-hidden mb-4 lg:mb-0">
+          <div className="relative w-full lg:w-5/12 h-[250px] lg:h-[clamp(350px,25vw,600px)] rounded-lg lg:rounded-2xl overflow-hidden mb-4 lg:mb-0">
             <Image
               src={imageUrl}
               alt={title}

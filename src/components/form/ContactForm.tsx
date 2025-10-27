@@ -141,19 +141,10 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
   return (
     <div className="flex flex-col h-full">
       {/* <div className="flex flex-col"> */}
-      <h2 className="text-5xl lg:text-8xl font-semibold tracking-tight mb-8 leading-[0.8]">
-        <span className="text-[#C56386]">Get in</span>{" "}
+      <h2 className="text-[clamp(48px,7vw,164px)] font-semibold tracking-tight mb-[clamp(32px,3vw,48px)] leading-[0.8]">
+        <span className="text-[#C43670]">Get in</span>{" "}
         <span className="text-[#5D001D]">touch</span>
       </h2>
-
-      {/* <div className="w-full flex justify-between">
-          <p className="font-semibold text-[clamp(16px,1.6vw,24px)] text-[#C56386]">
-            Always interested in hearing about new projects and collaborations.
-            Please reach out to me with your project details if interested in
-            collaborating.
-          </p>
-        </div> */}
-      {/* </div> */}
 
       <form
         ref={formRef}
@@ -163,13 +154,13 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
         <div className="flex flex-col lg:flex-row gap-3 w-full">
           {/* Full name */}
           <div
-            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.name ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 2xl:h-44 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.name ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="name"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)]"
             >
               Full name
             </label>
@@ -182,19 +173,19 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setErrors({ ...errors, name: false });
               }}
               placeholder="Fiona Wong"
-              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
+              className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] focus:outline-none"
             />
           </div>
 
           {/* Email */}
           <div
-            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.email ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 2xl:h-44 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.email ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="email"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)]"
             >
               Email
             </label>
@@ -207,19 +198,19 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setErrors({ ...errors, email: false });
               }}
               placeholder="fionawong@gmail.com"
-              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
+              className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] focus:outline-none"
             />
           </div>
 
           {/* Company */}
           <div
-            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.company ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col justify-end w-full lg:w-1/3 px-6 py-4 h-28 lg:h-32 2xl:h-44 rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.company ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="company"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)]"
             >
               Company
             </label>
@@ -228,11 +219,11 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
               name="company"
               value={clientData.company}
               onChange={(e) => {
-                setClientData({ ...clientData, email: e.target.value });
-                setErrors({ ...errors, email: false });
+                setClientData({ ...clientData, company: e.target.value });
+                setErrors({ ...errors, company: false });
               }}
               placeholder="Fifi Vintage"
-              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl focus:outline-none"
+              className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] focus:outline-none"
             />
           </div>
         </div>
@@ -240,13 +231,13 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
         <div className="flex flex-col lg:flex-row gap-3 w-full h-full">
           {/* Message */}
           <div
-            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-4 h-72 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.message ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-4 h-72 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.message ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="message"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)] mb-2"
             >
               Project details
             </label>
@@ -257,20 +248,20 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 setClientData({ ...clientData, message: e.target.value });
                 setErrors({ ...errors, message: false });
               }}
-              placeholder="Tell me you goals"
-              className="text-[#C56386] font-semibold placeholder:text-[#C56386]/40 text-xl lg:text-2xl leading-tight focus:outline-none h-full resize-none"
+              placeholder="Tell me your goals"
+              className="text-[#C43670] font-semibold placeholder:text-[#C43670]/40 text-[clamp(20px,1.5vw,32px)] leading-tight focus:outline-none h-full resize-none"
             ></textarea>
           </div>
 
           {/* Services */}
           <div
-            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.services ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.services ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="services"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)] mb-2 lg:mb-4 2xl:mb-6"
             >
               What can I do for you?
             </label>
@@ -279,11 +270,11 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 <li
                   key={service}
                   onClick={() => toggleService(service)}
-                  className={`px-3.5 py-1.5 font-semibold rounded-full border-2 border-[#C56386] cursor-pointer transition-colors duration-300 ease-in-out
+                  className={`px-3.5 2xl:px-5 py-1.5 2xl:py-2 text-[clamp(18px,1.2vw,24px)] font-semibold rounded-full border-2 border-[#C43670] cursor-pointer transition-colors duration-300 ease-in-out
                     ${
                       services.includes(service)
-                        ? "text-[#F0CCDF] bg-[#C56386]"
-                        : "text-[#C56386]"
+                        ? "text-[#F0CCDF] bg-[#C43670]"
+                        : "text-[#C43670]"
                     }`}
                 >
                   {service}
@@ -294,13 +285,13 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
 
           {/* Budget */}
           <div
-            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 h-96 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C56386]
-              ${errors.budget ? "border-[#d40101]" : "border-[#C56386]/0"}
+            className={`flex flex-col w-full lg:w-1/3 px-6 pt-12 lg:pt-16 pb-6 h-96 lg:h-full rounded-xl lg:rounded-2xl bg-[#F0CCDF] border-3 transition-colors duration-300 focus-within:border-[#C43670]
+              ${errors.budget ? "border-[#d40101]" : "border-[#C43670]/0"}
               `}
           >
             <label
               htmlFor="budget"
-              className="text-[#C56386] font-semibold text-xl lg:text-2xl mb-2"
+              className="text-[#C43670] font-semibold text-[clamp(20px,1.5vw,32px)] mb-2 lg:mb-4 2xl:mb-6"
             >
               Do you have a budget range?
             </label>
@@ -309,11 +300,11 @@ const ContactForm = forwardRef<ContactFormRef>((_, ref) => {
                 <li
                   key={option}
                   onClick={() => selectBudget(option)}
-                  className={`px-3.5 py-1.5 font-semibold rounded-full border-2 border-[#C56386] cursor-pointer transition-colors duration-300 ease-in-out
+                  className={`px-3.5 2xl:px-5 py-1.5 2xl:py-2 text-[clamp(18px,1.2vw,24px)] font-semibold rounded-full border-2 border-[#C43670] cursor-pointer transition-colors duration-300 ease-in-out
                     ${
                       budget === option
-                        ? "text-[#F0CCDF] bg-[#C56386]"
-                        : "text-[#C56386]"
+                        ? "text-[#F0CCDF] bg-[#C43670]"
+                        : "text-[#C43670]"
                     }`}
                 >
                   {option}

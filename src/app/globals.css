@@ -29,15 +29,15 @@
 }
 
 #card-1 .card-inner {
-  @apply bg-[#FFE5B4] text-[#805300];
+  @apply bg-[#BAD6DA] text-[#1A4A4A];
 }
 
 #card-2 .card-inner {
-  @apply bg-[#D4E8D4] text-[#2D5A2D];
+  @apply bg-[#A5C572] text-[#3D7337];
 }
 
 #card-3 .card-inner {
-  @apply bg-[#E2D1F9] text-[#3A1B6B];
+  @apply bg-[#F4E89B] text-[#EF4A74];
 }
 
 @keyframes blink {
